@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: fundguardian-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-fundguardian}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-fundguardian}
+      POSTGRES_DB: ${DB_DATABASE:-fundguardian}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-fundguardian}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fundguardian-app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: ${DB_USERNAME:-fundguardian}
+      DB_PASSWORD: ${DB_PASSWORD:-fundguardian}
+      DB_DATABASE: ${DB_DATABASE:-fundguardian}
+      DB_SYNC: ${DB_SYNC:-true}
+      DB_SSL: "false"
+      JWT_SECRET: ${JWT_SECRET:-fund-guardian-jwt-secret-change-in-production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      LLM_PROVIDER: ${LLM_PROVIDER:-deepseek}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.deepseek.com}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-v4-pro}
+      NEWS_API_KEY: ${NEWS_API_KEY:-}
+      NEWS_API_URL: ${NEWS_API_URL:-}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: 3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - app_logs:/app/logs
+
+volumes:
+  postgres_data:
+  app_logs:
