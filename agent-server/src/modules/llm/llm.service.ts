@@ -25,13 +25,16 @@ export class LlmService {
     return LLM_MODELS;
   }
 
-  private resolveModelConfig(modelId?: string): { provider: string; apiKey: string; baseUrl: string; model: string } {
+  private resolveModelConfig(modelId?: string, userApiKey?: string): { provider: string; apiKey: string; baseUrl: string; model: string } {
+    // 用户级API Key优先，其次使用全局默认Key
+    const apiKey = userApiKey || this.defaultApiKey;
+
     if (modelId) {
       const found = LLM_MODELS.find(m => m.id === modelId);
       if (found) {
         return {
           provider: found.provider,
-          apiKey: this.defaultApiKey,
+          apiKey,
           baseUrl: found.baseUrl,
           model: found.model,
         };
@@ -39,14 +42,14 @@ export class LlmService {
     }
     return {
       provider: this.defaultProvider,
-      apiKey: this.defaultApiKey,
+      apiKey,
       baseUrl: this.defaultBaseUrl,
       model: this.defaultModel,
     };
   }
 
-  async chatStream(messages: LlmMessage[], modelId: string | undefined, res: Response): Promise<void> {
-    const config = this.resolveModelConfig(modelId);
+  async chatStream(messages: LlmMessage[], modelId: string | undefined, res: Response, userApiKey?: string): Promise<void> {
+    const config = this.resolveModelConfig(modelId, userApiKey);
 
     if (!config.apiKey) {
       res.write(`data: ${JSON.stringify({ error: 'LLM API Key未配置，请在后端.env中设置LLM_API_KEY' })}\n\n`);
@@ -125,8 +128,8 @@ export class LlmService {
     }
   }
 
-  async chat(messages: LlmMessage[], modelId?: string): Promise<LlmResponse> {
-    const config = this.resolveModelConfig(modelId);
+  async chat(messages: LlmMessage[], modelId?: string, userApiKey?: string): Promise<LlmResponse> {
+    const config = this.resolveModelConfig(modelId, userApiKey);
 
     if (!config.apiKey) {
       throw new BizException(ErrorCode.LLM_KEY_MISSING, 'LLM API Key未配置，请在后端.env中设置LLM_API_KEY');

@@ -340,4 +340,10 @@ export const llmApi = {
   getCurrentModel() {
     return request({ method: 'GET', url: '/llm/model' })
   },
+  getApiKey() {
+    return request<{ hasKey: boolean; maskedKey: string }>({ method: 'GET', url: '/llm/key' })
+  },
+  setApiKey(apiKey: string) {
+    return request<{ hasKey: boolean; maskedKey: string }>({ method: 'PUT', url: '/llm/key', data: { apiKey } })
+  },
 }

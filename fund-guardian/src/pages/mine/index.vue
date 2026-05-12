@@ -77,6 +77,27 @@
         <text class="section-title">AI 模型</text>
       </view>
       <view class="card">
+        <view class="api-key-section">
+          <view class="api-key-header" @tap="showApiKeyPopup = true">
+            <view class="api-key-left">
+              <wd-icon name="lock" size="16px" :color="llmModelStore.hasApiKey ? '#22C55E' : '#FA5151'"></wd-icon>
+              <text class="api-key-label">API Key</text>
+            </view>
+            <view class="api-key-right">
+              <text v-if="llmModelStore.hasApiKey" class="api-key-value">{{ llmModelStore.maskedApiKey }}</text>
+              <text v-else class="api-key-empty">未设置</text>
+              <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+            </view>
+          </view>
+          <view v-if="llmModelStore.hasApiKey" class="api-key-status">
+            <view class="status-dot status-dot-ok"></view>
+            <text class="status-text status-text-ok">已配置</text>
+          </view>
+          <view v-else class="api-key-status">
+            <view class="status-dot status-dot-warn"></view>
+            <text class="status-text status-text-warn">请设置您的 API Key 以使用 AI 功能</text>
+          </view>
+        </view>
         <view class="model-current">
           <view class="model-current-info">
             <text class="model-current-name">{{ llmModelStore.currentModel.name }}</text>
@@ -109,6 +130,54 @@
         </view>
       </view>
     </view>
+
+    <wd-popup v-model="showApiKeyPopup" position="bottom" custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom));">
+      <view class="popup-title">设置 API Key</view>
+      <view class="api-key-hint">
+        <wd-icon name="info" size="14px" color="#6B7FD7"></wd-icon>
+        <text class="api-key-hint-text">您的 API Key 将加密存储，仅用于调用 AI 模型</text>
+      </view>
+      <view v-if="llmModelStore.hasApiKey" class="current-key-info">
+        <text class="current-key-label">当前 Key：</text>
+        <text class="current-key-value">{{ llmModelStore.maskedApiKey }}</text>
+      </view>
+      <view class="form-item">
+        <text class="form-label">{{ llmModelStore.hasApiKey ? '新 API Key（留空则保持不变）' : 'API Key' }}</text>
+        <wd-input
+          v-model="apiKeyInput"
+          placeholder="请输入您的 DeepSeek API Key"
+          clearable
+          show-password
+          custom-style="background: #F1F5F9; border-radius: 16rpx; padding: 16rpx 24rpx;"
+        />
+      </view>
+      <view class="form-item">
+        <text class="form-label">获取方式</text>
+        <view class="key-steps">
+          <text class="key-step">1. 访问 platform.deepseek.com</text>
+          <text class="key-step">2. 注册/登录账号</text>
+          <text class="key-step">3. 在 API Keys 页面创建新 Key</text>
+        </view>
+      </view>
+      <view class="api-key-btns">
+        <wd-button
+          plain
+          @click="showApiKeyPopup = false"
+          custom-style="border-radius: 20rpx; flex: 1; margin-right: 16rpx; height: 88rpx;"
+        >
+          取消
+        </wd-button>
+        <wd-button
+          type="primary"
+          :loading="apiKeySaving"
+          :disabled="apiKeySaving || (!llmModelStore.hasApiKey && !apiKeyInput.trim())"
+          @click="saveApiKey"
+          custom-style="border-radius: 20rpx; flex: 1; background: #6B7FD7; height: 88rpx;"
+        >
+          保存
+        </wd-button>
+      </view>
+    </wd-popup>
 
     <view class="section">
       <view class="section-header">
@@ -320,6 +389,10 @@ const showUserAgreement = ref(false)
 const newAccountName = ref('')
 const newAccountType = ref<AccountInfo['type']>('main')
 
+const showApiKeyPopup = ref(false)
+const apiKeyInput = ref('')
+const apiKeySaving = ref(false)
+
 const behaviorTracking = ref(settings.value.behaviorTrackingEnabled)
 const dailyReport = ref(settings.value.dailyReportEnabled)
 
@@ -352,6 +425,23 @@ function switchAccount(id: string) {
 function switchModel(modelId: string) {
   llmModelStore.setModel(modelId)
   uni.showToast({ title: '模型已切换', icon: 'success' })
+}
+
+async function saveApiKey() {
+  if (!apiKeyInput.value.trim() && !llmModelStore.hasApiKey) return
+  apiKeySaving.value = true
+  try {
+    if (apiKeyInput.value.trim()) {
+      await llmModelStore.setApiKey(apiKeyInput.value.trim())
+      uni.showToast({ title: 'API Key 保存成功', icon: 'success' })
+    }
+    apiKeyInput.value = ''
+    showApiKeyPopup.value = false
+  } catch (e: any) {
+    uni.showToast({ title: e?.message || '保存失败', icon: 'none' })
+  } finally {
+    apiKeySaving.value = false
+  }
 }
 
 function addNewAccount() {
@@ -390,6 +480,7 @@ onMounted(() => {
   settingsStore.loadSettings()
   llmModelStore.loadModels()
   llmModelStore.loadCurrentModel()
+  llmModelStore.loadApiKey()
 })
 
 function exportData() {
@@ -579,6 +670,137 @@ function handleLogout() {
 
 .account-current {
   margin-left: 12rpx;
+}
+
+.api-key-section {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F1F5F9;
+  margin-bottom: 8rpx;
+}
+
+.api-key-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.api-key-left {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.api-key-label {
+  font-size: 28rpx;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.api-key-right {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.api-key-value {
+  font-size: 24rpx;
+  color: #64748B;
+  font-family: monospace;
+}
+
+.api-key-empty {
+  font-size: 24rpx;
+  color: #FA5151;
+}
+
+.api-key-status {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 12rpx;
+}
+
+.status-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+}
+
+.status-dot-ok {
+  background: #22C55E;
+}
+
+.status-dot-warn {
+  background: #FA5151;
+}
+
+.status-text {
+  font-size: 22rpx;
+}
+
+.status-text-ok {
+  color: #22C55E;
+}
+
+.status-text-warn {
+  color: #FA5151;
+}
+
+.api-key-hint {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 24rpx;
+  padding: 16rpx 20rpx;
+  background: #F8F9FF;
+  border-radius: 12rpx;
+}
+
+.api-key-hint-text {
+  font-size: 24rpx;
+  color: #6B7FD7;
+}
+
+.current-key-info {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 20rpx;
+  padding: 16rpx 20rpx;
+  background: #F1F5F9;
+  border-radius: 12rpx;
+}
+
+.current-key-label {
+  font-size: 24rpx;
+  color: #64748B;
+}
+
+.current-key-value {
+  font-size: 24rpx;
+  color: #334155;
+  font-family: monospace;
+}
+
+.api-key-btns {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 32rpx;
+}
+
+.key-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  padding: 16rpx 20rpx;
+  background: #F1F5F9;
+  border-radius: 12rpx;
+}
+
+.key-step {
+  font-size: 24rpx;
+  color: #64748B;
+  line-height: 1.6;
 }
 
 .model-current {

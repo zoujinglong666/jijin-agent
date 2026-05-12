@@ -133,10 +133,15 @@ async function handleSubmit() {
     } else {
       await authStore.register(email.value.trim(), password.value)
     }
-    uni.showToast({ title: activeTab.value === 'login' ? '登录成功' : '注册成功', icon: 'success' })
-    setTimeout(() => {
-      uni.reLaunch({ url: '/pages/index/index' })
-    }, 1000)
+    if (activeTab.value === 'login') {
+      uni.showToast({ title: '登录成功', icon: 'success' })
+      setTimeout(() => {
+        uni.reLaunch({ url: '/pages/home/index' })
+      }, 1000)
+    } else {
+      uni.showToast({ title: '注册成功，请登录', icon: 'success' })
+      activeTab.value = 'login'
+    }
   } catch (error: any) {
     const msg = error?.message || (activeTab.value === 'login' ? '登录失败' : '注册失败')
     uni.showToast({ title: msg, icon: 'none', duration: 3000 })

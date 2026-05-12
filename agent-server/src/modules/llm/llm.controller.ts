@@ -19,7 +19,8 @@ export class LlmController {
 
   @Post('chat')
   async chat(@Req() req: any, @Body() body: { messages: LlmMessage[]; modelId?: string }) {
-    return this.llmService.chat(body.messages, body.modelId);
+    const user = await this.userRepository.findOne({ where: { id: req.user.userId } });
+    return this.llmService.chat(body.messages, body.modelId, user?.llmApiKey);
   }
 
   @Post('chat/stream')
@@ -28,12 +29,34 @@ export class LlmController {
     @Body() body: { messages: LlmMessage[]; modelId?: string },
     @Res() res: Response,
   ) {
+    const user = await this.userRepository.findOne({ where: { id: req.user.userId } });
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('X-Accel-Buffering', 'no');
     res.flushHeaders();
-    await this.llmService.chatStream(body.messages, body.modelId, res);
+    await this.llmService.chatStream(body.messages, body.modelId, res, user?.llmApiKey);
+  }
+
+  @Get('key')
+  async getApiKey(@Req() req: any) {
+    const user = await this.userRepository.findOne({ where: { id: req.user.userId } });
+    const key = user?.llmApiKey || '';
+    // 脱敏显示：只返回前4位和后4位
+    const masked = key.length > 8
+      ? key.slice(0, 4) + '****' + key.slice(-4)
+      : key ? '****' : '';
+    return { hasKey: !!key, maskedKey: masked };
+  }
+
+  @Put('key')
+  async setApiKey(@Req() req: any, @Body() body: { apiKey: string }) {
+    const apiKey = (body.apiKey || '').trim();
+    await this.userRepository.update({ id: req.user.userId }, { llmApiKey: apiKey });
+    const masked = apiKey.length > 8
+      ? apiKey.slice(0, 4) + '****' + apiKey.slice(-4)
+      : apiKey ? '****' : '';
+    return { hasKey: !!apiKey, maskedKey: masked };
   }
 
   @Get('models')

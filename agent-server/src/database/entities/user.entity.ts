@@ -26,6 +26,9 @@ export class User {
   @Column({ name: 'llmmodel', length: 50, default: 'deepseek-v4-pro' })
   llmModel: string;
 
+  @Column({ name: 'llmapikey', length: 500, default: '' })
+  llmApiKey: string;
+
   @CreateDateColumn({ name: 'createdat' })
   createdAt: Date;
 

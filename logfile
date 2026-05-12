@@ -1,0 +1,403 @@
+2026-05-12 14:05:01.895 CST [31896] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-12 14:05:01.899 CST [31896] LOG:  could not bind IPv6 address "::1": Permission denied
+2026-05-12 14:05:01.899 CST [31896] LOG:  could not bind IPv4 address "127.0.0.1": Permission denied
+2026-05-12 14:05:01.899 CST [31896] WARNING:  could not create listen socket for "localhost"
+2026-05-12 14:05:01.899 CST [31896] FATAL:  could not create any TCP/IP sockets
+2026-05-12 14:05:01.902 CST [31896] LOG:  database system is shut down
+2026-05-12 14:06:15.005 CST [31772] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-12 14:06:15.008 CST [31772] LOG:  listening on IPv6 address "::1", port 5433
+2026-05-12 14:06:15.009 CST [31772] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-05-12 14:06:15.129 CST [21400] LOG:  database system was shut down at 2026-05-12 14:04:18 CST
+2026-05-12 14:06:15.226 CST [31772] LOG:  database system is ready to accept connections
+2026-05-12 14:10:49.105 CST [976] ERROR:  CREATE DATABASE cannot run inside a transaction block
+2026-05-12 14:10:49.105 CST [976] STATEMENT:  CREATE USER fundguardian WITH PASSWORD 'fundguardian'; CREATE DATABASE fundguardian OWNER fundguardian;
+2026-05-12 14:11:15.140 CST [12148] LOG:  checkpoint starting: time
+2026-05-12 14:11:20.260 CST [12148] LOG:  checkpoint complete: wrote 50 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.108 s, sync=0.007 s, total=5.120 s; sync files=15, longest=0.001 s, average=0.001 s; distance=280 kB, estimate=280 kB; lsn=0/15BD768, redo lsn=0/15BD730
+2026-05-12 14:12:59.825 CST [33860] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:12:59.825 CST [33860] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:02.996 CST [33164] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:02.996 CST [33164] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:06.171 CST [34084] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:06.171 CST [34084] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:09.354 CST [34244] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:09.354 CST [34244] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:12.510 CST [33244] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:12.510 CST [33244] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:15.673 CST [34524] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:15.673 CST [34524] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:18.834 CST [33700] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:18.834 CST [33700] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:21.993 CST [17464] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:21.993 CST [17464] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:25.196 CST [27380] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:13:25.196 CST [27380] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:13:36.660 CST [12148] LOG:  checkpoint starting: immediate force wait
+2026-05-12 14:13:36.711 CST [12148] LOG:  checkpoint complete: wrote 16 buffers (0.1%); 1 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.006 s, total=0.051 s; sync files=11, longest=0.001 s, average=0.001 s; distance=6443 kB, estimate=6443 kB; lsn=0/1C08478, redo lsn=0/1C08440
+2026-05-12 14:14:34.577 CST [33092] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:34.577 CST [33092] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:37.758 CST [22696] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:37.758 CST [22696] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:40.924 CST [27224] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:40.924 CST [27224] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:44.097 CST [27296] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:44.097 CST [27296] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:47.264 CST [5784] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:47.264 CST [5784] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:50.413 CST [25608] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:50.413 CST [25608] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:53.564 CST [26904] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:53.564 CST [26904] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:56.703 CST [16728] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:56.703 CST [16728] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:14:59.848 CST [33816] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:14:59.848 CST [33816] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:15:24.515 CST [12148] LOG:  checkpoint starting: immediate force wait
+2026-05-12 14:15:24.532 CST [12148] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.006 s, total=0.018 s; sync files=9, longest=0.002 s, average=0.001 s; distance=6421 kB, estimate=6441 kB; lsn=0/224DA60, redo lsn=0/224DA28
+2026-05-12 14:20:24.595 CST [12148] LOG:  checkpoint starting: time
+2026-05-12 14:20:55.215 CST [23428] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:21:34.432 CST [27328] ERROR:  relation "users" does not exist at character 38
+2026-05-12 14:21:34.432 CST [27328] STATEMENT:  SELECT "User"."id" AS "User_id" FROM "users" "User" WHERE (("User"."isActive" = $1) AND ("User"."behaviorTrackingEnabled" = $2))
+2026-05-12 14:21:40.331 CST [27328] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:22:10.760 CST [12148] LOG:  checkpoint complete: wrote 977 buffers (6.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=105.969 s, sync=0.190 s, total=106.165 s; sync files=303, longest=0.025 s, average=0.001 s; distance=4580 kB, estimate=6255 kB; lsn=0/26C6DE8, redo lsn=0/26C6DB0
+2026-05-12 14:26:57.650 CST [15708] ERROR:  relation "users" does not exist at character 38
+2026-05-12 14:26:57.650 CST [15708] STATEMENT:  SELECT "User"."id" AS "User_id" FROM "users" "User" WHERE (("User"."isActive" = $1) AND ("User"."behaviorTrackingEnabled" = $2))
+2026-05-12 14:28:15.750 CST [29720] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:28:15.750 CST [29720] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" LIMIT 1
+2026-05-12 14:28:53.947 CST [36532] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:28:53.947 CST [36532] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:28:55.141 CST [36532] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:28:55.141 CST [36532] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:29:48.539 CST [36852] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:29:48.542 CST [25472] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:29:48.542 CST [36664] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:29:48.542 CST [13164] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:29:58.416 CST [34880] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:31:19.617 CST [36740] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:31:19.617 CST [36740] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:32:35.922 CST [35184] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:32:35.922 CST [35184] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:32:37.508 CST [35184] ERROR:  relation "users" does not exist at character 440
+2026-05-12 14:32:37.508 CST [35184] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:33:13.782 CST [22380] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:13.782 CST [22380] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:16.954 CST [32052] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:16.954 CST [32052] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:20.107 CST [36032] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:20.107 CST [36032] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:23.257 CST [35548] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:23.257 CST [35548] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:26.406 CST [35164] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:26.406 CST [35164] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:29.567 CST [36244] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:29.567 CST [36244] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:32.714 CST [12984] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:32.714 CST [12984] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:35.873 CST [5220] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:35.873 CST [5220] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:33:39.193 CST [19936] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:33:39.193 CST [19936] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:28.306 CST [36700] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:28.306 CST [36700] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:31.484 CST [36764] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:31.484 CST [36764] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:34.643 CST [35560] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:34.643 CST [35560] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:38.334 CST [34888] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:38.334 CST [34888] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:41.675 CST [32988] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:41.675 CST [32988] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:44.845 CST [25968] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:44.845 CST [25968] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:48.123 CST [3480] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:48.123 CST [3480] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:51.297 CST [34496] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:51.297 CST [34496] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:34:54.555 CST [21264] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:34:54.555 CST [21264] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:35:20.596 CST [34948] ERROR:  DROP DATABASE cannot run inside a transaction block
+2026-05-12 14:35:20.596 CST [34948] STATEMENT:  DROP DATABASE IF EXISTS fundguardian; CREATE DATABASE fundguardian OWNER fundguardian;
+2026-05-12 14:35:24.916 CST [12148] LOG:  checkpoint starting: time
+2026-05-12 14:35:41.206 CST [12148] LOG:  checkpoint complete: wrote 153 buffers (0.9%); 0 WAL file(s) added, 0 removed, 0 recycled; write=16.282 s, sync=0.003 s, total=16.291 s; sync files=7, longest=0.001 s, average=0.001 s; distance=4149 kB, estimate=6044 kB; lsn=0/2AD5338, redo lsn=0/2AD4250
+2026-05-12 14:35:41.207 CST [12148] LOG:  checkpoint starting: immediate force wait
+2026-05-12 14:35:41.213 CST [12148] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.002 s, total=0.007 s; sync files=2, longest=0.001 s, average=0.001 s; distance=4 kB, estimate=5440 kB; lsn=0/2AD53E8, redo lsn=0/2AD53B0
+2026-05-12 14:35:55.483 CST [25620] FATAL:  database "fundguardian" does not exist
+2026-05-12 14:36:05.077 CST [25000] ERROR:  permission denied to create database
+2026-05-12 14:36:05.077 CST [25000] STATEMENT:  CREATE DATABASE fundguardian;
+2026-05-12 14:37:09.181 CST [36900] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:09.181 CST [36900] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:09.181 CST [36900] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:09.188 CST [36900] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:09.188 CST [36900] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:12.287 CST [37008] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:12.287 CST [37008] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:12.287 CST [37008] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:12.292 CST [37008] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:12.292 CST [37008] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:15.382 CST [37264] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:15.382 CST [37264] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:15.382 CST [37264] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:15.387 CST [37264] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:15.387 CST [37264] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:18.471 CST [37376] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:18.471 CST [37376] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:18.471 CST [37376] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:18.476 CST [37376] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:18.476 CST [37376] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:21.666 CST [37708] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:21.666 CST [37708] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:21.666 CST [37708] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:21.670 CST [37708] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:21.670 CST [37708] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:24.855 CST [36912] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:24.855 CST [36912] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:24.855 CST [36912] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:24.860 CST [36912] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:24.860 CST [36912] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:27.942 CST [36968] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:27.942 CST [36968] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:27.942 CST [36968] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:27.947 CST [36968] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:27.947 CST [36968] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:31.023 CST [37168] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:31.023 CST [37168] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:31.023 CST [37168] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:31.028 CST [37168] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:31.028 CST [37168] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:37:34.121 CST [36868] ERROR:  permission denied to create extension "uuid-ossp"
+2026-05-12 14:37:34.121 CST [36868] HINT:  Must have CREATE privilege on current database to create this extension.
+2026-05-12 14:37:34.121 CST [36868] STATEMENT:  CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+2026-05-12 14:37:34.125 CST [36868] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:37:34.125 CST [36868] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:24.972 CST [34392] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:24.972 CST [34392] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:28.068 CST [33948] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:28.068 CST [33948] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:31.153 CST [37692] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:31.153 CST [37692] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:34.253 CST [21892] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:34.253 CST [21892] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:37.337 CST [23768] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:37.337 CST [23768] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:40.416 CST [36468] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:40.416 CST [36468] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:43.497 CST [36928] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:43.497 CST [36928] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:46.581 CST [35944] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:46.581 CST [35944] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:38:49.665 CST [37740] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:38:49.665 CST [37740] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:42.354 CST [34108] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:42.354 CST [34108] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:45.455 CST [792] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:45.455 CST [792] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:48.534 CST [37256] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:48.534 CST [37256] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:51.636 CST [19628] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:51.636 CST [19628] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:54.825 CST [7360] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:54.825 CST [7360] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:39:57.910 CST [33952] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:39:57.910 CST [33952] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:40:01.000 CST [22492] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:40:01.000 CST [22492] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:40:04.081 CST [36936] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:40:04.081 CST [36936] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:40:07.186 CST [35616] ERROR:  permission denied for schema public at character 14
+2026-05-12 14:40:07.186 CST [35616] STATEMENT:  CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "email" character varying(100) NOT NULL, "password" character varying(255) NOT NULL, "riskPreference" character varying(50) NOT NULL DEFAULT 'balanced', "isActive" boolean NOT NULL DEFAULT true, "behaviorTrackingEnabled" boolean NOT NULL DEFAULT true, "dailyReportEnabled" boolean NOT NULL DEFAULT true, "llmModel" character varying(50) NOT NULL DEFAULT 'deepseek-v4-pro', "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))
+2026-05-12 14:40:41.251 CST [12148] LOG:  checkpoint starting: time
+2026-05-12 14:40:55.507 CST [35244] ERROR:  column User.isActive does not exist at character 61
+2026-05-12 14:40:55.507 CST [35244] HINT:  Perhaps you meant to reference the column "User.isactive".
+2026-05-12 14:40:55.507 CST [35244] STATEMENT:  SELECT "User"."id" AS "User_id" FROM "users" "User" WHERE (("User"."isActive" = $1) AND ("User"."behaviorTrackingEnabled" = $2))
+2026-05-12 14:41:29.485 CST [36012] ERROR:  column User.riskPreference does not exist at character 104
+2026-05-12 14:41:29.485 CST [36012] HINT:  Perhaps you meant to reference the column "User.riskpreference".
+2026-05-12 14:41:29.485 CST [36012] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:42:28.199 CST [12148] LOG:  checkpoint complete: wrote 983 buffers (6.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=106.781 s, sync=0.161 s, total=106.949 s; sync files=308, longest=0.006 s, average=0.001 s; distance=4626 kB, estimate=5359 kB; lsn=0/2F68860, redo lsn=0/2F59BF0
+2026-05-12 14:43:17.649 CST [37580] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:17.649 CST [37580] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:20.816 CST [37536] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:20.816 CST [37536] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:23.971 CST [9120] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:23.971 CST [9120] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:27.134 CST [37624] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:27.134 CST [37624] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:30.293 CST [24096] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:30.293 CST [24096] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:33.449 CST [37724] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:33.449 CST [37724] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:36.623 CST [33380] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:36.623 CST [33380] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:39.803 CST [36260] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:39.803 CST [36260] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:43:42.981 CST [37308] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:43:42.981 CST [37308] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:44:04.770 CST [12148] LOG:  checkpoint starting: immediate force wait
+2026-05-12 14:44:04.784 CST [12148] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.001 s, average=0.001 s; distance=2002 kB, estimate=5023 kB; lsn=0/314E520, redo lsn=0/314E4E8
+2026-05-12 14:45:55.558 CST [37260] ERROR:  column User.isActive does not exist at character 61
+2026-05-12 14:45:55.558 CST [37260] HINT:  Perhaps you meant to reference the column "User.isactive".
+2026-05-12 14:45:55.558 CST [37260] STATEMENT:  SELECT "User"."id" AS "User_id" FROM "users" "User" WHERE (("User"."isActive" = $1) AND ("User"."behaviorTrackingEnabled" = $2))
+2026-05-12 14:45:57.948 CST [34968] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:48:27.521 CST [20144] ERROR:  column User.riskPreference does not exist at character 104
+2026-05-12 14:48:27.521 CST [20144] HINT:  Perhaps you meant to reference the column "User.riskpreference".
+2026-05-12 14:48:27.521 CST [20144] STATEMENT:  SELECT "User"."id" AS "User_id", "User"."email" AS "User_email", "User"."password" AS "User_password", "User"."riskPreference" AS "User_riskPreference", "User"."isActive" AS "User_isActive", "User"."behaviorTrackingEnabled" AS "User_behaviorTrackingEnabled", "User"."dailyReportEnabled" AS "User_dailyReportEnabled", "User"."llmModel" AS "User_llmModel", "User"."createdAt" AS "User_createdAt", "User"."updatedAt" AS "User_updatedAt" FROM "users" "User" WHERE (("User"."email" = $1)) LIMIT 1
+2026-05-12 14:49:04.817 CST [12148] LOG:  checkpoint starting: time
+2026-05-12 14:49:40.782 CST [38100] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:40.782 CST [38100] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:43.940 CST [31908] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:43.940 CST [31908] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:47.120 CST [37904] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:47.120 CST [37904] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:50.268 CST [38288] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:50.268 CST [38288] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:53.423 CST [23768] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:53.423 CST [23768] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:56.603 CST [38668] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:56.603 CST [38668] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:49:59.776 CST [3792] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:49:59.776 CST [3792] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:50:03.078 CST [35988] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:50:03.078 CST [35988] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:50:06.236 CST [35804] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 14:50:06.236 CST [35804] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 14:50:24.210 CST [12148] LOG:  checkpoint complete: wrote 736 buffers (4.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=79.380 s, sync=0.002 s, total=79.393 s; sync files=4, longest=0.001 s, average=0.001 s; distance=4928 kB, estimate=5013 kB; lsn=0/38625F0, redo lsn=0/361E6F8
+2026-05-12 14:50:24.212 CST [12148] LOG:  checkpoint starting: immediate force wait
+2026-05-12 14:50:24.226 CST [12148] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.002 s, total=0.014 s; sync files=2, longest=0.001 s, average=0.001 s; distance=2319 kB, estimate=4744 kB; lsn=0/38626A0, redo lsn=0/3862668
+2026-05-12 14:51:46.120 CST [32932] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 14:53:59.751 CST [31772] LOG:  background worker "logical replication launcher" (PID 28448) was terminated by exception 0xC000013A
+2026-05-12 14:53:59.751 CST [31772] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2026-05-12 14:53:59.751 CST [31772] LOG:  terminating any other active server processes
+2026-05-12 14:53:59.790 CST [31772] LOG:  received fast shutdown request
+2026-05-12 16:56:36.959 CST [5472] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-12 16:56:36.963 CST [5472] LOG:  listening on IPv6 address "::1", port 5433
+2026-05-12 16:56:36.963 CST [5472] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-05-12 16:56:37.089 CST [36624] LOG:  database system was interrupted; last known up at 2026-05-12 16:06:56 CST
+2026-05-12 16:56:37.325 CST [36624] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-05-12 16:56:37.328 CST [36624] LOG:  redo starts at 0/3D7F688
+2026-05-12 16:56:37.331 CST [36624] LOG:  invalid record length at 0/3D8FA08: expected at least 24, got 0
+2026-05-12 16:56:37.331 CST [36624] LOG:  redo done at 0/3D8F9D0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-05-12 16:56:37.333 CST [19400] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-05-12 16:56:37.345 CST [19400] LOG:  checkpoint complete: wrote 16 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.013 s; sync files=9, longest=0.001 s, average=0.001 s; distance=64 kB, estimate=64 kB; lsn=0/3D8FA08, redo lsn=0/3D8FA08
+2026-05-12 16:56:37.428 CST [5472] LOG:  database system is ready to accept connections
+2026-05-12 16:57:30.038 CST [11356] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:30.038 CST [11356] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:33.208 CST [31816] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:33.208 CST [31816] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:36.366 CST [35348] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:36.366 CST [35348] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:39.519 CST [33956] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:39.519 CST [33956] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:42.675 CST [36888] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:42.675 CST [36888] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:45.823 CST [18816] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:45.823 CST [18816] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:48.972 CST [37808] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:48.972 CST [37808] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:52.120 CST [32148] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:52.120 CST [32148] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:57:55.268 CST [36664] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 16:57:55.268 CST [36664] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 16:59:22.680 CST [21704] ERROR:  DROP DATABASE cannot run inside a transaction block
+2026-05-12 16:59:22.680 CST [21704] STATEMENT:  DROP DATABASE IF EXISTS fundguardian; CREATE DATABASE fundguardian;
+2026-05-12 16:59:39.638 CST [19400] LOG:  checkpoint starting: immediate force wait
+2026-05-12 16:59:39.657 CST [19400] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.019 s; sync files=2, longest=0.001 s, average=0.001 s; distance=2180 kB, estimate=2180 kB; lsn=0/3FB0CD8, redo lsn=0/3FB0CA0
+2026-05-12 17:00:21.348 CST [17108] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:21.348 CST [17108] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:24.524 CST [37316] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:24.524 CST [37316] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:27.680 CST [35976] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:27.680 CST [35976] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:30.837 CST [34240] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:30.837 CST [34240] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:33.992 CST [31492] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:33.992 CST [31492] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:37.178 CST [29604] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:37.178 CST [29604] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:40.381 CST [19464] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:40.381 CST [19464] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:43.551 CST [17168] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:43.551 CST [17168] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:00:46.705 CST [33608] ERROR:  relation "IDX_58a84633c02339db7eea312eac" already exists
+2026-05-12 17:00:46.705 CST [33608] STATEMENT:  CREATE INDEX "IDX_58a84633c02339db7eea312eac" ON "growth_metrics" ("userId") 
+2026-05-12 17:02:30.505 CST [19400] LOG:  checkpoint starting: immediate force wait
+2026-05-12 17:02:30.517 CST [19400] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.012 s; sync files=4, longest=0.001 s, average=0.001 s; distance=6417 kB, estimate=6417 kB; lsn=0/45F5278, redo lsn=0/45F5240
+2026-05-12 17:07:30.520 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:09:21.225 CST [19400] LOG:  checkpoint complete: wrote 1003 buffers (6.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=110.542 s, sync=0.157 s, total=110.705 s; sync files=349, longest=0.002 s, average=0.001 s; distance=4796 kB, estimate=6255 kB; lsn=0/4AAA6A0, redo lsn=0/4AA45D8
+2026-05-12 17:17:30.252 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:17:32.865 CST [19400] LOG:  checkpoint complete: wrote 25 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.600 s, sync=0.008 s, total=2.614 s; sync files=15, longest=0.001 s, average=0.001 s; distance=25 kB, estimate=5632 kB; lsn=0/4AAAC10, redo lsn=0/4AAABD8
+2026-05-12 17:22:30.871 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:22:31.978 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.088 s, sync=0.006 s, total=1.108 s; sync files=11, longest=0.002 s, average=0.001 s; distance=3 kB, estimate=5069 kB; lsn=0/4AAB898, redo lsn=0/4AAB860
+2026-05-12 17:27:30.995 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:27:32.086 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.082 s, sync=0.004 s, total=1.091 s; sync files=11, longest=0.001 s, average=0.001 s; distance=3 kB, estimate=4562 kB; lsn=0/4AAC720, redo lsn=0/4AAC6E8
+2026-05-12 17:32:30.092 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:32:31.187 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.082 s, sync=0.007 s, total=1.095 s; sync files=11, longest=0.002 s, average=0.001 s; distance=4 kB, estimate=4106 kB; lsn=0/4AAD798, redo lsn=0/4AAD760
+2026-05-12 17:37:30.202 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:37:31.310 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.087 s, sync=0.006 s, total=1.109 s; sync files=11, longest=0.001 s, average=0.001 s; distance=4 kB, estimate=3696 kB; lsn=0/4AAEA10, redo lsn=0/4AAE9D8
+2026-05-12 17:42:30.314 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:42:31.410 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.085 s, sync=0.007 s, total=1.097 s; sync files=11, longest=0.002 s, average=0.001 s; distance=5 kB, estimate=3327 kB; lsn=0/4AAFE78, redo lsn=0/4AAFE40
+2026-05-12 17:47:30.418 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:47:31.529 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.096 s, sync=0.007 s, total=1.111 s; sync files=11, longest=0.002 s, average=0.001 s; distance=5 kB, estimate=2995 kB; lsn=0/4AB14E0, redo lsn=0/4AB14A8
+2026-05-12 17:52:30.534 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:52:31.631 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.086 s, sync=0.006 s, total=1.097 s; sync files=11, longest=0.002 s, average=0.001 s; distance=6 kB, estimate=2696 kB; lsn=0/4AB2D50, redo lsn=0/4AB2D18
+2026-05-12 17:57:30.640 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 17:57:31.743 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.092 s, sync=0.006 s, total=1.104 s; sync files=11, longest=0.002 s, average=0.001 s; distance=6 kB, estimate=2427 kB; lsn=0/4AB47A8, redo lsn=0/4AB4770
+2026-05-12 17:59:51.918 CST [23980] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:02:30.752 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:02:33.608 CST [19400] LOG:  checkpoint complete: wrote 27 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.843 s, sync=0.008 s, total=2.857 s; sync files=22, longest=0.001 s, average=0.001 s; distance=23 kB, estimate=2187 kB; lsn=0/4ABA730, redo lsn=0/4ABA6F8
+2026-05-12 18:07:30.612 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:07:33.035 CST [19400] LOG:  checkpoint complete: wrote 23 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.404 s, sync=0.015 s, total=2.423 s; sync files=20, longest=0.003 s, average=0.001 s; distance=12 kB, estimate=1969 kB; lsn=0/4ABD9B8, redo lsn=0/4ABD980
+2026-05-12 18:09:05.023 CST [33508] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:05.023 CST [31456] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:05.023 CST [30972] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:05.023 CST [16432] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:05.023 CST [25872] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:05.023 CST [3836] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:09:07.341 CST [32140] ERROR:  column "llmapikey" of relation "users" already exists
+2026-05-12 18:09:07.341 CST [32140] STATEMENT:  ALTER TABLE "users" ADD "llmapikey" character varying(500) NOT NULL DEFAULT ''
+2026-05-12 18:09:10.953 CST [26804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:10:03.351 CST [31256] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:10:17.288 CST [26804] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:10:29.640 CST [32472] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:11:14.679 CST [23232] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:11:29.177 CST [34864] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:12:30.050 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:12:35.308 CST [19400] LOG:  checkpoint complete: wrote 49 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=5.234 s, sync=0.019 s, total=5.258 s; sync files=43, longest=0.002 s, average=0.001 s; distance=128 kB, estimate=1785 kB; lsn=0/4ADDC40, redo lsn=0/4ADDC08
+2026-05-12 18:12:47.705 CST [32952] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:17:30.316 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:17:32.804 CST [19400] LOG:  checkpoint complete: wrote 21 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.189 s, sync=0.239 s, total=2.488 s; sync files=21, longest=0.043 s, average=0.012 s; distance=31 kB, estimate=1610 kB; lsn=0/4AE5878, redo lsn=0/4AE5840
+2026-05-12 18:22:30.813 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:22:30.925 CST [19400] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.104 s, sync=0.002 s, total=0.113 s; sync files=2, longest=0.002 s, average=0.001 s; distance=1 kB, estimate=1449 kB; lsn=0/4AE5F90, redo lsn=0/4AE5F58
+2026-05-12 18:27:30.936 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:27:33.566 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.618 s, sync=0.006 s, total=2.630 s; sync files=11, longest=0.001 s, average=0.001 s; distance=16 kB, estimate=1305 kB; lsn=0/4AEA0A8, redo lsn=0/4AEA070
+2026-05-12 18:28:11.204 CST [32036] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-12 18:32:30.577 CST [19400] LOG:  checkpoint starting: time
+2026-05-12 18:32:31.739 CST [19400] LOG:  checkpoint complete: wrote 11 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.087 s, sync=0.061 s, total=1.163 s; sync files=11, longest=0.049 s, average=0.006 s; distance=17 kB, estimate=1177 kB; lsn=0/4AEE560, redo lsn=0/4AEE528
+2026-05-12 18:33:11.721 CST [5472] LOG:  background worker "logical replication launcher" (PID 15784) was terminated by exception 0xC000013A
+2026-05-12 18:33:11.721 CST [5472] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2026-05-12 18:33:11.725 CST [5472] LOG:  terminating any other active server processes
+2026-05-12 18:33:12.007 CST [5472] LOG:  all server processes terminated; reinitializing
+^C2026-05-12 18:33:12.617 CST [13700] LOG:  database system was interrupted; last known up at 2026-05-12 18:32:31 CST
+2026-05-12 18:33:13.044 CST [13700] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-05-12 18:33:13.048 CST [13700] LOG:  redo starts at 0/4AEE528

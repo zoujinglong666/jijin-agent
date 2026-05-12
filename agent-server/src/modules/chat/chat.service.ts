@@ -46,7 +46,7 @@ export class ChatService {
 
     const user = await this.userRepository.findOne({ where: { id: userId } });
     const resolvedModelId = modelId || user?.llmModel || undefined;
-    const response = await this.llmService.chat(fullMessages, resolvedModelId);
+    const response = await this.llmService.chat(fullMessages, resolvedModelId, user?.llmApiKey);
 
     return this.parseAIResponse(response.content, userId);
   }
@@ -72,8 +72,7 @@ export class ChatService {
     // For streaming, we accumulate the full response and parse at the end
     let fullContent = '';
     const originalWrite = res.write.bind(res);
-
-    await this.llmService.chatStream(fullMessages, resolvedModelId, {
+    const wrappedRes = {
       ...res,
       write: (chunk: any) => {
         try {
@@ -98,7 +97,9 @@ export class ChatService {
         } catch {}
         return res.end(...args);
       },
-    } as any);
+    } as any;
+
+    await this.llmService.chatStream(fullMessages, resolvedModelId, wrappedRes, user?.llmApiKey);
   }
 
   private parseAIResponse(rawContent: string, userId: string): ChatResponse {

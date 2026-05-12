@@ -292,6 +292,8 @@ export const useAgentStore = defineStore('agent', () => {
 export const useLlmModelStore = defineStore('llmModel', () => {
   const currentModelId = ref<string>('deepseek-v4-pro')
   const availableModels = ref<import('@/types').LlmModelConfig[]>([])
+  const hasApiKey = ref(false)
+  const maskedApiKey = ref('')
 
   const currentModel = computed(() => {
     return availableModels.value.find(m => m.id === currentModelId.value) || availableModels.value[0]
@@ -323,7 +325,28 @@ export const useLlmModelStore = defineStore('llmModel', () => {
     }
   }
 
-  return { currentModelId, availableModels, currentModel, loadModels, loadCurrentModel, setModel }
+  async function loadApiKey() {
+    try {
+      const result = await llmApi.getApiKey() as any
+      hasApiKey.value = result.hasKey
+      maskedApiKey.value = result.maskedKey
+    } catch (e) {
+      console.error('loadApiKey failed:', e)
+    }
+  }
+
+  async function setApiKey(apiKey: string) {
+    try {
+      const result = await llmApi.setApiKey(apiKey) as any
+      hasApiKey.value = result.hasKey
+      maskedApiKey.value = result.maskedKey
+    } catch (e) {
+      console.error('setApiKey failed:', e)
+      throw e
+    }
+  }
+
+  return { currentModelId, availableModels, currentModel, hasApiKey, maskedApiKey, loadModels, loadCurrentModel, setModel, loadApiKey, setApiKey }
 })
 
 export const useAuthStore = defineStore('auth', () => {
