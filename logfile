@@ -401,3 +401,15 @@
 ^C2026-05-12 18:33:12.617 CST [13700] LOG:  database system was interrupted; last known up at 2026-05-12 18:32:31 CST
 2026-05-12 18:33:13.044 CST [13700] LOG:  database system was not properly shut down; automatic recovery in progress
 2026-05-12 18:33:13.048 CST [13700] LOG:  redo starts at 0/4AEE528
+2026-05-12 18:40:55.659 CST [36380] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-12 18:40:55.663 CST [36380] LOG:  listening on IPv6 address "::1", port 5433
+2026-05-12 18:40:55.663 CST [36380] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-05-12 18:40:55.795 CST [38772] LOG:  database system was interrupted while in recovery at 2026-05-12 18:33:13 CST
+2026-05-12 18:40:55.795 CST [38772] HINT:  This probably means that some data is corrupted and you will have to use the last backup for recovery.
+2026-05-12 18:40:55.994 CST [38772] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-05-12 18:40:55.997 CST [38772] LOG:  redo starts at 0/4AEE528
+2026-05-12 18:40:56.001 CST [38772] LOG:  invalid record length at 0/4AF2E08: expected at least 24, got 0
+2026-05-12 18:40:56.001 CST [38772] LOG:  redo done at 0/4AF2DD0 system usage: CPU: user: 0.00 s, system: 0.01 s, elapsed: 0.00 s
+2026-05-12 18:40:56.004 CST [35292] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-05-12 18:40:56.015 CST [35292] LOG:  checkpoint complete: wrote 13 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.005 s, total=0.013 s; sync files=12, longest=0.001 s, average=0.001 s; distance=18 kB, estimate=18 kB; lsn=0/4AF2E08, redo lsn=0/4AF2E08
+2026-05-12 18:40:56.112 CST [36380] LOG:  database system is ready to accept connections

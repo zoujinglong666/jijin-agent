@@ -15,7 +15,7 @@ onHide(() => {
 <style>
 /* 修复wd-icon组件基础样式缺失问题 */
 /* 由于scoped样式导致wd-icon基础字体样式无法应用，这里全局覆盖 */
-@import '@wot-ui/ui/styles/index.scss';
+/* 移除错误的导入路径，因为wot-ui样式应该通过组件自动加载 */
 
 /* 确保wd-icon基础样式可用 */
 .wd-icon {
