@@ -52,13 +52,46 @@ export class LlmService {
     const config = this.resolveModelConfig(modelId, userApiKey);
 
     if (!config.apiKey) {
-      res.write(`data: ${JSON.stringify({ error: 'LLM API Key未配置，请在后端.env中设置LLM_API_KEY' })}\n\n`);
+      res.write(`data: ${JSON.stringify({ error: 'LLM API Key未配置，请在后端.env中设置LLM_API_KEY' })}\\n\\n`);
       res.end();
       return;
     }
 
     try {
       const url = `${config.baseUrl}/v1/chat/completions`;
+      
+      // 处理多模态消息，转换图片为OpenAI格式
+      const formattedMessages = messages.map(msg => {
+        if (msg.images && msg.images.length > 0) {
+          // 构建多模态消息格式
+          const content: any[] = [];
+          
+          // 添加文本内容
+          if (msg.content) {
+            content.push({
+              type: 'text',
+              text: msg.content
+            });
+          }
+          
+          // 添加图片内容
+          msg.images.forEach(imageBase64 => {
+            content.push({
+              type: 'image_url',
+              image_url: {
+                url: imageBase64
+              }
+            });
+          });
+          
+          return {
+            role: msg.role,
+            content: content
+          };
+        }
+        return msg;
+      });
+
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -67,7 +100,7 @@ export class LlmService {
         },
         body: JSON.stringify({
           model: config.model,
-          messages,
+          messages: formattedMessages,
           temperature: 0.3,
           max_tokens: 2000,
           stream: true,
@@ -77,13 +110,13 @@ export class LlmService {
       if (!response.ok) {
         const errorText = await response.text().catch(() => '');
         this.logger.error(`LLM API error: ${response.status} ${errorText}`);
-        res.write(`data: ${JSON.stringify({ error: `LLM API调用失败: ${response.status}` })}\n\n`);
+        res.write(`data: ${JSON.stringify({ error: `LLM API调用失败: ${response.status}` })}\\n\\n`);
         res.end();
         return;
       }
 
       if (!response.body) {
-        res.write(`data: ${JSON.stringify({ error: 'LLM API返回空响应' })}\n\n`);
+        res.write(`data: ${JSON.stringify({ error: 'LLM API返回空响应' })}\\n\\n`);
         res.end();
         return;
       }
@@ -97,7 +130,7 @@ export class LlmService {
         if (done) break;
 
         buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
+        const lines = buffer.split('\\n');
         buffer = lines.pop() || '';
 
         for (const line of lines) {
@@ -105,14 +138,22 @@ export class LlmService {
           if (!trimmed || !trimmed.startsWith('data: ')) continue;
           const data = trimmed.slice(6);
           if (data === '[DONE]') {
-            res.write('data: [DONE]\n\n');
+            res.write('data: [DONE]\\n\\n');
             continue;
           }
           try {
             const parsed = JSON.parse(data);
             const content = parsed.choices?.[0]?.delta?.content;
             if (content) {
-              res.write(`data: ${JSON.stringify({ content })}\n\n`);
+              res.write(`data: ${JSON.stringify({ content })}\\n\\n`);
+            }
+            
+            // 检查是否有工具调用开始
+            if (parsed.choices?.[0]?.delta?.tool_calls) {
+              const toolCalls = parsed.choices[0].delta.tool_calls;
+              if (toolCalls && toolCalls.length > 0) {
+                res.write(`data: ${JSON.stringify({ tool_calls: toolCalls })}\\n\\n`);
+              }
             }
           } catch {
             // skip malformed chunks
@@ -123,7 +164,7 @@ export class LlmService {
       res.end();
     } catch (error) {
       this.logger.error('LLM stream failed', error instanceof Error ? error.message : String(error));
-      res.write(`data: ${JSON.stringify({ error: 'LLM调用异常' })}\n\n`);
+      res.write(`data: ${JSON.stringify({ error: 'LLM调用异常' })}\\n\\n`);
       res.end();
     }
   }
@@ -137,6 +178,39 @@ export class LlmService {
 
     try {
       const url = `${config.baseUrl}/v1/chat/completions`;
+      
+      // 处理多模态消息，转换图片为OpenAI格式
+      const formattedMessages = messages.map(msg => {
+        if (msg.images && msg.images.length > 0) {
+          // 构建多模态消息格式
+          const content: any[] = [];
+          
+          // 添加文本内容
+          if (msg.content) {
+            content.push({
+              type: 'text',
+              text: msg.content
+            });
+          }
+          
+          // 添加图片内容
+          msg.images.forEach(imageBase64 => {
+            content.push({
+              type: 'image_url',
+              image_url: {
+                url: imageBase64
+              }
+            });
+          });
+          
+          return {
+            role: msg.role,
+            content: content
+          };
+        }
+        return msg;
+      });
+
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -145,7 +219,7 @@ export class LlmService {
         },
         body: JSON.stringify({
           model: config.model,
-          messages,
+          messages: formattedMessages,
           temperature: 0.3,
           max_tokens: 2000,
         }),

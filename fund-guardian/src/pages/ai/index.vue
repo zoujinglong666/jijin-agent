@@ -3,7 +3,7 @@
     <view class="chat-area" :style="{ paddingBottom: keyboardHeight + 'px' }">
       <view v-if="messages.length === 0" class="welcome-section">
         <view class="welcome-icon">
-          <wd-icon name="chat" size="48px" color="#8B9DC3"></wd-icon>
+          <CarbonIcon name="chat" size="48" color="#8B9DC3" />
         </view>
         <view class="welcome-title">AI风险助手</view>
         <view class="welcome-desc">安静地帮你分析持仓风险，理性地陪伴你做决策</view>
@@ -18,7 +18,7 @@
             class="quick-btn"
             @tap="sendQuickQuestion(q)"
           >
-            <wd-icon name="chat1" size="14px" color="#6B7FD7"></wd-icon>
+            <CarbonIcon name="message" size="14" color="#6B7FD7" />
             <text class="quick-btn-text">{{ q }}</text>
           </view>
         </view>
@@ -26,7 +26,7 @@
 
       <view v-for="(msg, i) in messages" :key="i" :class="['msg-row', msg.role === 'user' ? 'msg-row-user' : 'msg-row-ai']">
         <view v-if="msg.role === 'ai'" class="avatar ai-avatar">
-          <wd-icon name="chat" size="18px" color="#FFFFFF"></wd-icon>
+          <CarbonIcon name="chat" size="18" color="#FFFFFF" />
         </view>
         <view :class="['msg-bubble', msg.role === 'user' ? 'bubble-user' : 'bubble-ai']">
           <text class="msg-text">{{ msg.content }}</text>
@@ -38,7 +38,7 @@
 
       <view v-if="isTyping" class="msg-row msg-row-ai">
         <view class="avatar ai-avatar">
-          <wd-icon name="chat" size="18px" color="#FFFFFF"></wd-icon>
+          <CarbonIcon name="chat" size="18" color="#FFFFFF" />
         </view>
         <view class="msg-bubble bubble-ai">
           <view class="typing-dots">

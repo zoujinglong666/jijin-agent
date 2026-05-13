@@ -24,7 +24,7 @@
 
     <view v-if="activeTab === 'all'" class="tab-content">
       <view v-if="sortedFunds.length === 0" class="empty-state">
-        <wd-icon name="folder-open" size="80rpx" color="#B0BEC5" />
+        <CarbonIcon name="folder" size="40" color="#B0BEC5" />
         <text class="empty-text">暂无持仓基金</text>
         <text class="empty-hint">点击右下角按钮添加你的第一只基金</text>
       </view>
@@ -63,7 +63,7 @@
         </view>
         <template #right>
           <view class="swipe-delete-btn" @click="confirmDelete(fund)">
-            <wd-icon name="delete" size="40rpx" color="#FFFFFF" />
+            <CarbonIcon name="delete" size="20" color="#FFFFFF" />
             <text class="swipe-delete-text">删除</text>
           </view>
         </template>
@@ -72,7 +72,7 @@
 
     <view v-if="activeTab === 'sector'" class="tab-content">
       <view v-if="Object.keys(sectorGroups).length === 0" class="empty-state">
-        <wd-icon name="folder-open" size="80rpx" color="#B0BEC5" />
+        <CarbonIcon name="folder" size="40" color="#B0BEC5" />
         <text class="empty-text">暂无持仓基金</text>
         <text class="empty-hint">点击右下角按钮添加你的第一只基金</text>
       </view>
@@ -126,7 +126,7 @@
     </view>
 
     <view class="fab-btn" @click="goToAdd">
-      <wd-icon name="add" size="48rpx" color="#FFFFFF" />
+      <CarbonIcon name="add" size="24" color="#FFFFFF" />
     </view>
 
     <wd-popup

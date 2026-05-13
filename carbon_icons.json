@@ -1,0 +1,130 @@
+[
+  {
+    "name": "arrow--right.svg",
+    "path": "packages/icons/src/svg/24/arrow--right.svg",
+    "sha": "383668475774195f681e7c5a0015416b764a7ccd",
+    "size": 590,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/arrow--right.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/arrow--right.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/383668475774195f681e7c5a0015416b764a7ccd",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/arrow--right.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/arrow--right.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/383668475774195f681e7c5a0015416b764a7ccd",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/arrow--right.svg"
+    }
+  },
+  {
+    "name": "checkmark--filled.svg",
+    "path": "packages/icons/src/svg/24/checkmark--filled.svg",
+    "sha": "2012208a430c4e160902cf1b5d8116f3da70ac9f",
+    "size": 768,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/checkmark--filled.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/checkmark--filled.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/2012208a430c4e160902cf1b5d8116f3da70ac9f",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/checkmark--filled.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/checkmark--filled.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/2012208a430c4e160902cf1b5d8116f3da70ac9f",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/checkmark--filled.svg"
+    }
+  },
+  {
+    "name": "checkmark.svg",
+    "path": "packages/icons/src/svg/24/checkmark.svg",
+    "sha": "d98ac197bf08da6ed979b03754b499e84b6bc21c",
+    "size": 588,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/checkmark.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/checkmark.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/d98ac197bf08da6ed979b03754b499e84b6bc21c",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/checkmark.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/checkmark.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/d98ac197bf08da6ed979b03754b499e84b6bc21c",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/checkmark.svg"
+    }
+  },
+  {
+    "name": "error--filled.svg",
+    "path": "packages/icons/src/svg/24/error--filled.svg",
+    "sha": "48cf0d6b411992511ba9afa42acb278017ec527a",
+    "size": 738,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/error--filled.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/error--filled.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/48cf0d6b411992511ba9afa42acb278017ec527a",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/error--filled.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/error--filled.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/48cf0d6b411992511ba9afa42acb278017ec527a",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/error--filled.svg"
+    }
+  },
+  {
+    "name": "menu.svg",
+    "path": "packages/icons/src/svg/24/menu.svg",
+    "sha": "0232d7276d58134c575ec4deab7e3a9ffe9a3f0b",
+    "size": 558,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/menu.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/menu.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/0232d7276d58134c575ec4deab7e3a9ffe9a3f0b",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/menu.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/menu.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/0232d7276d58134c575ec4deab7e3a9ffe9a3f0b",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/menu.svg"
+    }
+  },
+  {
+    "name": "misuse.svg",
+    "path": "packages/icons/src/svg/24/misuse.svg",
+    "sha": "1abeb1412eb83c6072cc5ecbc33711e597ca8623",
+    "size": 868,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/misuse.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/misuse.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/1abeb1412eb83c6072cc5ecbc33711e597ca8623",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/misuse.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/misuse.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/1abeb1412eb83c6072cc5ecbc33711e597ca8623",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/misuse.svg"
+    }
+  },
+  {
+    "name": "save.svg",
+    "path": "packages/icons/src/svg/24/save.svg",
+    "sha": "6c42ce267b07874d954e6c6d340da0a786c2182d",
+    "size": 707,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/save.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/save.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/6c42ce267b07874d954e6c6d340da0a786c2182d",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/save.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/save.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/6c42ce267b07874d954e6c6d340da0a786c2182d",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/save.svg"
+    }
+  },
+  {
+    "name": "warning--filled.svg",
+    "path": "packages/icons/src/svg/24/warning--filled.svg",
+    "sha": "09b4621dffb0aa70102f3ba0afa592b95bc8f173",
+    "size": 887,
+    "url": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/warning--filled.svg?ref=main",
+    "html_url": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/warning--filled.svg",
+    "git_url": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/09b4621dffb0aa70102f3ba0afa592b95bc8f173",
+    "download_url": "https://raw.githubusercontent.com/carbon-design-system/carbon/main/packages/icons/src/svg/24/warning--filled.svg",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/carbon-design-system/carbon/contents/packages/icons/src/svg/24/warning--filled.svg?ref=main",
+      "git": "https://api.github.com/repos/carbon-design-system/carbon/git/blobs/09b4621dffb0aa70102f3ba0afa592b95bc8f173",
+      "html": "https://github.com/carbon-design-system/carbon/blob/main/packages/icons/src/svg/24/warning--filled.svg"
+    }
+  }
+]

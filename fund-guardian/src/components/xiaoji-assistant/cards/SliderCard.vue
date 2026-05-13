@@ -57,4 +57,12 @@ function confirm() {
 .value-text { font-size: 32rpx; font-weight: 600; color: #6B7FD7; }
 .confirm-btn { margin-top: 20rpx; padding: 16rpx; background: #6B7FD7; border-radius: 12rpx; text-align: center; }
 .confirm-text { color: #FFF; font-size: 26rpx; font-weight: 500; }
+
+@media (prefers-color-scheme: dark) {
+  .card { background: #1E293B; border: 1rpx solid #334155; }
+  .card-question { color: #F8FAFC; }
+  .card-desc { color: #94A3B8; }
+  .label-item { color: #94A3B8; }
+  .value-text { color: #6B7FD7; }
+}
 </style>

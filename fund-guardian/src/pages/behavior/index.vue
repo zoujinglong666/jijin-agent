@@ -40,7 +40,7 @@
         <view class="tag-header">
           <text class="tag-label">{{ tag.label }}</text>
           <wd-icon
-            :name="tag.triggered ? 'warning' : 'check-outline'"
+            :name="tag.triggered ? 'warning' : 'success'"
             :color="tag.triggered ? '#C4A882' : '#B8C4CE'"
             size="36rpx"
           />
@@ -129,6 +129,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import CarbonIcon from '@/components/CarbonIcon.vue'
 import { useFundStore, useGrowthStore } from '@/store'
 import { behaviorApi } from '@/services/api'
 import type { InvestmentPersonality, BehaviorTag } from '@/types'

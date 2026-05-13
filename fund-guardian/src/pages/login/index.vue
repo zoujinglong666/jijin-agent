@@ -2,7 +2,7 @@
   <view class="login-page">
     <view class="header">
       <view class="logo-wrap">
-        <wd-icon name="shield-check" size="48px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="shield" size="48" color="#6B7FD7" />
       </view>
       <text class="title">基金守护</text>
       <text class="subtitle">理性投资，情绪守护</text>

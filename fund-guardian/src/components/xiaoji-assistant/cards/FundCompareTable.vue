@@ -71,4 +71,17 @@ function isHighlight(fund: any): boolean {
 .fund-code { font-size: 20rpx; color: #94A3B8; }
 .td-val { font-size: 24rpx; color: #334155; }
 .footnote { font-size: 20rpx; color: #94A3B8; margin-top: 12rpx; display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .card { background: #1E293B; border: 1rpx solid #334155; }
+  .card-title { color: #F8FAFC; }
+  .table-header { background: #334155; }
+  .th { color: #94A3B8; }
+  .table-row { border-bottom: 1rpx solid #334155; }
+  .table-row.highlight { background: #064E3B; }
+  .fund-name { color: #F8FAFC; }
+  .fund-code { color: #94A3B8; }
+  .td-val { color: #CBD5E1; }
+  .footnote { color: #94A3B8; }
+}
 </style>

@@ -89,23 +89,33 @@
     "list": [
       {
         "pagePath": "pages/home/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png"
       },
       {
         "pagePath": "pages/portfolio/index",
-        "text": "持仓"
+        "text": "持仓",
+        "iconPath": "static/tabbar/portfolio.png",
+        "selectedIconPath": "static/tabbar/portfolio-active.png"
       },
       {
         "pagePath": "pages/behavior/index",
-        "text": "行为"
+        "text": "行为",
+        "iconPath": "static/tabbar/behavior.png",
+        "selectedIconPath": "static/tabbar/behavior-active.png"
       },
       {
         "pagePath": "pages/risk/index",
-        "text": "风险"
+        "text": "风险",
+        "iconPath": "static/tabbar/risk.png",
+        "selectedIconPath": "static/tabbar/risk-active.png"
       },
       {
         "pagePath": "pages/mine/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "static/tabbar/mine.png",
+        "selectedIconPath": "static/tabbar/mine-active.png"
       }
     ]
   }

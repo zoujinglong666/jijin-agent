@@ -3,7 +3,7 @@
     <view class="user-section">
       <view class="user-card">
         <view class="avatar-wrap">
-          <wd-icon name="user" size="32px" color="#8B9DC3"></wd-icon>
+          <CarbonIcon name="user" size="32" color="#8B9DC3" />
         </view>
         <view class="user-info">
           <text class="user-name">{{ authStore.user?.email || '基金守护者' }}</text>
@@ -14,7 +14,7 @@
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="shield" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="shield" size="16" color="#6B7FD7" />
         <text class="section-title">风险偏好</text>
       </view>
       <view class="card">
@@ -26,14 +26,14 @@
             @tap="setRiskPreference(opt.value)"
           >
             <view class="risk-option-icon" :style="{ background: opt.bgColor }">
-              <wd-icon :name="opt.icon" size="20px" :color="opt.color"></wd-icon>
+              <CarbonIcon :name="opt.icon" size="20" :color="opt.color" />
             </view>
             <view class="risk-option-text">
               <text class="risk-option-label">{{ opt.label }}</text>
               <text class="risk-option-desc">{{ opt.desc }}</text>
             </view>
             <view v-if="settings.riskPreference === opt.value" class="risk-option-check">
-              <wd-icon name="check" size="16px" color="#6B7FD7"></wd-icon>
+              <CarbonIcon name="check" size="16" color="#6B7FD7" />
             </view>
           </view>
         </view>
@@ -42,7 +42,7 @@
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="wallet" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="wallet" size="16" color="#6B7FD7" />
         <text class="section-title">多账户管理</text>
       </view>
       <view class="card">
@@ -65,7 +65,7 @@
         </view>
 
         <view class="add-account-btn" @tap="showAddAccount = true">
-          <wd-icon name="add" size="16px" color="#6B7FD7"></wd-icon>
+          <CarbonIcon name="add" size="16" color="#6B7FD7" />
           <text class="add-account-text">添加新账户</text>
         </view>
       </view>
@@ -73,20 +73,20 @@
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="chat" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="chat" size="16" color="#6B7FD7" />
         <text class="section-title">AI 模型</text>
       </view>
       <view class="card">
         <view class="api-key-section">
           <view class="api-key-header" @tap="showApiKeyPopup = true">
             <view class="api-key-left">
-              <wd-icon name="lock" size="16px" :color="llmModelStore.hasApiKey ? '#22C55E' : '#FA5151'"></wd-icon>
+              <CarbonIcon name="lock" size="16" :color="llmModelStore.hasApiKey ? '#22C55E' : '#FA5151'" />
               <text class="api-key-label">API Key</text>
             </view>
             <view class="api-key-right">
               <text v-if="llmModelStore.hasApiKey" class="api-key-value">{{ llmModelStore.maskedApiKey }}</text>
               <text v-else class="api-key-empty">未设置</text>
-              <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+              <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
             </view>
           </view>
           <view v-if="llmModelStore.hasApiKey" class="api-key-status">
@@ -100,10 +100,10 @@
         </view>
         <view class="model-current">
           <view class="model-current-info">
-            <text class="model-current-name">{{ llmModelStore.currentModel.name }}</text>
-            <text class="model-current-desc">{{ llmModelStore.currentModel.description }}</text>
+            <text class="model-current-name">{{ llmModelStore.currentModel?.name || '加载中...' }}</text>
+            <text class="model-current-desc">{{ llmModelStore.currentModel?.description || '' }}</text>
           </view>
-          <view v-if="llmModelStore.currentModel.tag" class="model-tag" :style="{ background: llmModelStore.currentModel.tagColor + '18', color: llmModelStore.currentModel.tagColor }">
+          <view v-if="llmModelStore.currentModel?.tag" class="model-tag" :style="{ background: (llmModelStore.currentModel?.tagColor || '#6B7FD7') + '18', color: llmModelStore.currentModel?.tagColor || '#6B7FD7' }">
             {{ llmModelStore.currentModel.tag }}
           </view>
         </view>
@@ -134,7 +134,7 @@
     <wd-popup v-model="showApiKeyPopup" position="bottom" :z-index="1000" root-portal safe-area-inset-bottom custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx 32rpx;">
       <view class="popup-title">设置 API Key</view>
       <view class="api-key-hint">
-        <wd-icon name="info" size="14px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="info" size="14" color="#6B7FD7" />
         <text class="api-key-hint-text">您的 API Key 将加密存储，仅用于调用 AI 模型</text>
       </view>
       <view v-if="llmModelStore.hasApiKey" class="current-key-info">
@@ -181,36 +181,36 @@
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="setting" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="setting" size="16" color="#6B7FD7" />
         <text class="section-title">数据管理</text>
       </view>
       <view class="card">
         <view class="setting-item" @tap="exportData">
           <view class="setting-left">
-            <wd-icon name="download" size="18px" color="#64748B"></wd-icon>
+            <CarbonIcon name="download" size="18" color="#64748B" />
             <text class="setting-label">导出数据</text>
           </view>
-          <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
         </view>
         <view class="setting-item" @tap="showClearConfirm = true">
           <view class="setting-left">
-            <wd-icon name="delete" size="18px" color="#C48282"></wd-icon>
+            <CarbonIcon name="delete" size="18" color="#C48282" />
             <text class="setting-label" style="color: #C48282;">清除所有数据</text>
           </view>
-          <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
         </view>
       </view>
     </view>
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="lock" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="lock" size="16" color="#6B7FD7" />
         <text class="section-title">隐私设置</text>
       </view>
       <view class="card">
         <view class="setting-item">
           <view class="setting-left">
-            <wd-icon name="view" size="18px" color="#64748B"></wd-icon>
+            <CarbonIcon name="view" size="18" color="#64748B" />
             <text class="setting-label">行为追踪</text>
           </view>
           <wd-switch
@@ -222,7 +222,7 @@
         </view>
         <view class="setting-item">
           <view class="setting-left">
-            <wd-icon name="notification" size="18px" color="#64748B"></wd-icon>
+            <CarbonIcon name="notification" size="18" color="#64748B" />
             <text class="setting-label">每日晚报</text>
           </view>
           <wd-switch
@@ -237,43 +237,43 @@
 
     <view class="section">
       <view class="section-header">
-        <wd-icon name="info" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="info" size="16" color="#6B7FD7" />
         <text class="section-title">关于产品</text>
       </view>
       <view class="card">
         <view class="setting-item">
           <view class="setting-left">
-            <wd-icon name="computer" size="18px" color="#64748B"></wd-icon>
+            <CarbonIcon name="computer" size="18" color="#64748B" />
             <text class="setting-label">版本信息</text>
           </view>
           <text class="setting-value">2.0.0</text>
         </view>
         <view class="setting-item" @tap="showRiskDisclaimer = true">
           <view class="setting-left">
-            <wd-icon name="warning" size="18px" color="#C4A882"></wd-icon>
+            <CarbonIcon name="warning" size="18" color="#C4A882" />
             <text class="setting-label" style="color: #C4A882;">风险声明</text>
           </view>
-          <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
         </view>
         <view class="setting-item" @tap="showUserAgreement = true">
           <view class="setting-left">
-            <wd-icon name="notes" size="18px" color="#64748B"></wd-icon>
+            <CarbonIcon name="notes" size="18" color="#64748B" />
             <text class="setting-label">用户协议</text>
           </view>
-          <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
         </view>
         <view v-if="authStore.isLoggedIn" class="setting-item" @tap="handleLogout">
           <view class="setting-left">
-            <wd-icon name="logout" size="18px" color="#C48282"></wd-icon>
+            <CarbonIcon name="logout" size="18" color="#C48282" />
             <text class="setting-label" style="color: #C48282;">退出登录</text>
           </view>
-          <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
         </view>
       </view>
     </view>
 
     <view class="disclaimer-banner">
-      <wd-icon name="warning" size="14px" color="#C4A882"></wd-icon>
+      <CarbonIcon name="warning" size="14" color="#C4A882" />
       <text class="disclaimer-text">本产品不构成投资建议，不承诺收益，不提供交易服务</text>
     </view>
 
@@ -402,8 +402,8 @@ interface AccountInfo {
 
 const riskOptions = [
   { value: 'conservative' as const, label: '保守型', desc: '追求稳健，优先保本', icon: 'shield', color: '#8B9DC3', bgColor: '#EEF0F7' },
-  { value: 'balanced' as const, label: '平衡型', desc: '兼顾收益与安全', icon: 'balance', color: '#A8B5D1', bgColor: '#EEF0F7' },
-  { value: 'aggressive' as const, label: '激进型', desc: '追求高收益，承受高波动', icon: 'trend', color: '#C4A882', bgColor: '#F5EFE5' },
+  { value: 'balanced' as const, label: '平衡型', desc: '兼顾收益与安全', icon: 'safe', color: '#A8B5D1', bgColor: '#EEF0F7' },
+  { value: 'aggressive' as const, label: '激进型', desc: '追求高收益，承受高波动', icon: 'fire', color: '#C4A882', bgColor: '#F5EFE5' },
 ]
 
 const accountTypes = [

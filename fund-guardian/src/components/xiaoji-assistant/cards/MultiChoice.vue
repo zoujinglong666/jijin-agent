@@ -56,4 +56,13 @@ function confirm() {
 .confirm-btn { margin-top: 20rpx; padding: 16rpx; background: #6B7FD7; border-radius: 12rpx; text-align: center; }
 .confirm-btn.disabled { background: #CBD5E1; }
 .confirm-text { color: #FFF; font-size: 26rpx; font-weight: 500; }
+
+@media (prefers-color-scheme: dark) {
+  .card { background: #1E293B; border: 1rpx solid #334155; }
+  .card-question { color: #F8FAFC; }
+  .card-desc { color: #94A3B8; }
+  .chip { background: #0F172A; border: 2rpx solid #334155; }
+  .chip.active { border-color: #6B7FD7; background: #334155; }
+  .chip-label { color: #F8FAFC; }
+}
 </style>

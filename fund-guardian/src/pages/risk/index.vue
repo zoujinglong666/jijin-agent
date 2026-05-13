@@ -138,6 +138,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import CarbonIcon from '@/components/CarbonIcon.vue'
 import { useFundStore } from '@/store'
 import { riskApi, portfolioApi } from '@/services/api'
 import type { StressTestScenario, StressTestResult } from '@/types'

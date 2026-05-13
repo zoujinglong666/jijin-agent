@@ -20,7 +20,7 @@ export class ChatController {
   @Post('stream')
   async chatStream(
     @Req() req: any,
-    @Body() body: { messages: LlmMessage[]; modelId?: string },
+    @Body() body: { messages: LlmMessage[]; modelId?: string; images?: string[] },
     @Res() res: Response,
   ) {
     res.setHeader('Content-Type', 'text/event-stream');
@@ -28,6 +28,15 @@ export class ChatController {
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('X-Accel-Buffering', 'no');
     res.flushHeaders();
+    
+    // 将图片添加到用户消息中
+    if (body.images && body.images.length > 0) {
+      const lastUserMessage = body.messages.findLast(msg => msg.role === 'user');
+      if (lastUserMessage) {
+        lastUserMessage.images = body.images;
+      }
+    }
+    
     await this.chatService.chatStream(req.user.userId, body.messages, body.modelId, res);
   }
 }

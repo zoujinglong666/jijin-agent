@@ -40,7 +40,7 @@ export class RegretService {
         id: 'reduce_semi',
         title: '如果3个月前降低半导体仓位30%',
         desc: '减少高波动板块的集中度',
-        icon: 'arrow-down',
+        icon: 'download',
         iconColor: '#8B9DC3',
         bgColor: '#EEF0F7',
       },

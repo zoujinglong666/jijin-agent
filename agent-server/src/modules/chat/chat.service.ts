@@ -4,6 +4,7 @@ import { PortfolioService } from '../portfolio/portfolio.service';
 import { RiskService } from '../risk/risk.service';
 import { BehaviorService } from '../behavior/behavior.service';
 import { XIAOJI_SYSTEM_PROMPT } from './chat.prompt';
+import { AgentToolsService } from '../agent/agent.tools';
 import type { LlmMessage } from '../../common/types';
 import { User } from '../../database/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -25,6 +26,7 @@ export class ChatService {
     private portfolioService: PortfolioService,
     private riskService: RiskService,
     private behaviorService: BehaviorService,
+    private agentToolsService: AgentToolsService,
     @InjectRepository(User)
     private userRepository: Repository<User>,
   ) {}
@@ -71,28 +73,42 @@ export class ChatService {
 
     // For streaming, we accumulate the full response and parse at the end
     let fullContent = '';
+    let toolCalls: any[] = [];
     const originalWrite = res.write.bind(res);
     const wrappedRes = {
       ...res,
       write: (chunk: any) => {
         try {
           const str = typeof chunk === 'string' ? chunk : JSON.stringify(chunk);
-          const dataMatch = str.match(/data:\s*({.*?})\n/);
+          const dataMatch = str.match(/data:\\s*({.*?})\\n/);
           if (dataMatch) {
             const parsed = JSON.parse(dataMatch[1]);
             if (parsed.content) {
               fullContent += parsed.content;
             }
+            if (parsed.tool_calls) {
+              toolCalls = [...toolCalls, ...parsed.tool_calls];
+            }
           }
         } catch {}
         return originalWrite(chunk);
       },
-      end: (...args: any[]) => {
-        // After stream ends, try to save profile_update
+      end: async (...args: any[]) => {
+        // After stream ends, try to save profile_update and execute tools
         try {
           const parsed = this.parseAIResponseRaw(fullContent);
           if (parsed.profile_update) {
             this.saveProfile(userId, parsed.profile_update).catch(() => {});
+          }
+          
+          // Execute any detected tool calls
+          for (const toolCall of toolCalls) {
+            const toolName = toolCall.function?.name || toolCall.name;
+            const toolArgs = toolCall.function?.arguments ? JSON.parse(toolCall.function.arguments) : {};
+            
+            if (toolName) {
+              await this.agentToolsService.executeTool(userId, toolName, toolArgs, res);
+            }
           }
         } catch {}
         return res.end(...args);
@@ -129,7 +145,7 @@ export class ChatService {
     } catch {}
 
     // Try to extract JSON from markdown code block
-    const jsonMatch = rawContent.match(/```(?:json)?\s*\n?([\s\S]*?)```/);
+    const jsonMatch = rawContent.match(/```(?:json)?\\s*\\n?([\\s\\S]*?)```/);
     if (jsonMatch) {
       try {
         const parsed = JSON.parse(jsonMatch[1]);
@@ -144,7 +160,7 @@ export class ChatService {
     }
 
     // Try to find a JSON object in the content
-    const objMatch = rawContent.match(/\{[\s\S]*"text"[\s\S]*\}/);
+    const objMatch = rawContent.match(/\\{[\\s\\S]*\"text\"[\\s\\S]*\\}/);
     if (objMatch) {
       try {
         const parsed = JSON.parse(objMatch[0]);
@@ -194,7 +210,7 @@ export class ChatService {
       if (user.riskPreference) profile.risk_tolerance = user.riskPreference;
 
       if (Object.keys(profile).length === 0) return null;
-      return `用户画像（已收集的信息，请优先利用，避免重复提问）：\n${JSON.stringify(profile, null, 2)}`;
+      return `用户画像（已收集的信息，请优先利用，避免重复提问）：\\n${JSON.stringify(profile, null, 2)}`;
     } catch {
       return null;
     }
@@ -218,7 +234,7 @@ export class ChatService {
       const fundList = funds
         .slice(0, 20)
         .map(f => `${f.name}(${f.code}) - ${f.sector}板块, 金额${Number(f.amount).toFixed(0)}元, 收益率${Number(f.profitRate).toFixed(2)}%`)
-        .join('\n');
+        .join('\\n');
 
       return `用户当前持仓数据：
 - 持有基金数量：${funds.length}只

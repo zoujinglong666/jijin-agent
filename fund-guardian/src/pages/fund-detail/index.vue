@@ -1,7 +1,7 @@
 <template>
   <view class="fund-detail-page">
     <view v-if="!fund" class="empty-state">
-      <wd-icon name="warning" size="80rpx" color="#B0BEC5" />
+      <CarbonIcon name="warning" size="40" color="#B0BEC5" />
       <text class="empty-text">未找到该基金信息</text>
     </view>
 
@@ -101,7 +101,7 @@
             custom-style="margin-top: 20rpx;"
           />
           <view class="simulate-warning">
-            <wd-icon name="warning" size="28rpx" color="#F59E0B" />
+            <CarbonIcon name="warning" size="14" color="#F59E0B" />
             <text class="simulate-warning-text">该记录仅用于仓位管理，不会执行真实交易</text>
           </view>
           <wd-button
@@ -175,7 +175,7 @@
           </view>
         </view>
         <view class="reduce-popup-warning">
-          <wd-icon name="warning" size="28rpx" color="#F59E0B" />
+          <CarbonIcon name="warning" size="14" color="#F59E0B" />
           <text class="reduce-popup-warning-text">该记录仅用于仓位管理，不会执行真实交易</text>
         </view>
         <view class="reduce-popup-actions">

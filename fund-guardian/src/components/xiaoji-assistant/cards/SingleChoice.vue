@@ -73,4 +73,16 @@ function cancel() {
 .cancel-btn { padding: 16rpx 24rpx; background: #F1F5F9; border-radius: 12rpx; }
 .cancel-text { color: #64748B; font-size: 26rpx; }
 .card-note { font-size: 22rpx; color: #94A3B8; margin-top: 12rpx; display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .card { background: #1E293B; border: 1rpx solid #334155; }
+  .card-question { color: #F8FAFC; }
+  .card-desc { color: #94A3B8; }
+  .option-btn { background: #0F172A; border: 2rpx solid #334155; }
+  .option-btn.selected { border-color: #6B7FD7; background: #334155; }
+  .opt-label { color: #F8FAFC; }
+  .opt-desc { color: #94A3B8; }
+  .cancel-btn { background: #334155; }
+  .cancel-text { color: #CBD5E1; }
+}
 </style>

@@ -31,7 +31,7 @@ async function bootstrap() {
   // 全局响应拦截器 — 成功返回自动包装为 Result.ok(data)
   app.useGlobalInterceptors(new TransformInterceptor());
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
   await app.listen(port);
 
   const logger = new Logger('Bootstrap');

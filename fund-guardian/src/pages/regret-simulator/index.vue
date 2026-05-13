@@ -3,7 +3,7 @@
     <view class="intro-section">
       <view class="intro-card">
         <view class="intro-icon-wrap">
-          <wd-icon name="time" size="28px" color="#8B9DC3"></wd-icon>
+          <CarbonIcon name="time" size="28" color="#8B9DC3" />
         </view>
         <view class="intro-content">
           <text class="intro-title">看看如果当时做了不同决策，现在会怎样</text>
@@ -13,7 +13,7 @@
     </view>
 
     <view class="disclaimer-banner">
-      <wd-icon name="warning" size="14px" color="#C4A882"></wd-icon>
+      <CarbonIcon name="warning" size="14" color="#C4A882" />
       <text class="disclaimer-text">模拟结果仅供参考，不构成投资建议。历史表现不代表未来收益。</text>
     </view>
 
@@ -23,7 +23,7 @@
 
     <view v-else class="scenarios-section">
       <view class="section-header">
-        <wd-icon name="transfer" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="refresh" size="16" color="#6B7FD7" />
         <text class="section-title">模拟场景</text>
       </view>
 
@@ -35,14 +35,14 @@
       >
         <view class="scenario-header">
           <view class="scenario-icon-wrap" :style="{ background: scenario.bgColor }">
-            <wd-icon :name="scenario.icon" size="20px" :color="scenario.iconColor"></wd-icon>
+            <CarbonIcon :name="scenario.icon" size="20" :color="scenario.iconColor" />
           </view>
           <view class="scenario-info">
             <text class="scenario-title">{{ scenario.title }}</text>
             <text class="scenario-desc">{{ scenario.desc }}</text>
           </view>
           <view class="scenario-arrow">
-            <wd-icon name="arrow-right" size="14px" color="#CBD5E1"></wd-icon>
+            <CarbonIcon name="forward" size="14" color="#CBD5E1" />
           </view>
         </view>
       </view>
@@ -50,7 +50,7 @@
 
     <view v-if="currentResult" class="result-section">
       <view class="section-header">
-        <wd-icon name="chart" size="16px" color="#6B7FD7"></wd-icon>
+        <CarbonIcon name="folder" size="16" color="#6B7FD7" />
         <text class="section-title">模拟结果</text>
       </view>
 
@@ -65,7 +65,7 @@
             <text class="compare-value">{{ formatAmount(totalAmount) }}元</text>
           </view>
           <view class="compare-arrow">
-            <wd-icon name="transfer" size="20px" color="#94A3B8"></wd-icon>
+            <CarbonIcon name="refresh" size="20" color="#94A3B8" />
           </view>
           <view class="compare-item">
             <text class="compare-label">模拟账户</text>
@@ -104,7 +104,7 @@
         </view>
 
         <view class="result-insight">
-          <wd-icon name="chat1" size="14px" color="#94A3B8"></wd-icon>
+          <CarbonIcon name="message" size="14" color="#94A3B8" />
           <text class="insight-text">{{ currentResult.insight }}</text>
         </view>
       </view>

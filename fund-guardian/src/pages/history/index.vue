@@ -18,7 +18,7 @@
                 <text class="record-fund-name">{{ getFundName(item.fundId) }}</text>
               </view>
               <view v-if="item.reason" class="record-reason">
-                <wd-icon name="notes" size="14px" color="#94A3B8"></wd-icon>
+                <CarbonIcon name="notes" size="14" color="#94A3B8" />
                 <text class="reason-text">{{ item.reason }}</text>
               </view>
             </view>
@@ -121,7 +121,7 @@
             <view v-for="item in behaviorLogs" :key="item.id" class="log-card">
               <view class="log-left">
                 <view class="log-icon-wrap" :style="{ background: getEventBgColor(item.eventType) }">
-                  <wd-icon :name="getEventIcon(item.eventType)" size="16px" :color="getEventColor(item.eventType)"></wd-icon>
+                  <CarbonIcon :name="getEventIcon(item.eventType)" size="16" :color="getEventColor(item.eventType)" />
                 </view>
               </view>
               <view class="log-right">
@@ -313,8 +313,8 @@ function getRiskTagType(score: number): TagType {
 function getEventIcon(type: UserBehaviorLog['eventType']): string {
   const map: Record<string, string> = {
     view_account: 'view',
-    reduce_position: 'arrow-down',
-    add_position: 'arrow-up',
+    reduce_position: 'arrow-right',
+    add_position: 'arrow-right',
     edit_position: 'edit',
     open_app: 'computer',
   }

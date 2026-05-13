@@ -86,6 +86,7 @@ export interface MemoryRecord {
 export interface LlmMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
+  images?: string[]; // Base64 encoded images for multimodal input
 }
 
 export interface LlmResponse {

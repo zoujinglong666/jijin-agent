@@ -7,6 +7,7 @@ import { AgentContextBuilder } from './agent.context';
 import { AgentPrompt } from './agent.prompt';
 import { AgentDecision } from './agent.decision';
 import { AgentMemory } from './agent.memory';
+import { AgentToolsService } from './agent.tools';
 import { LlmModule } from '../llm/llm.module';
 import { PortfolioModule } from '../portfolio/portfolio.module';
 import { BehaviorModule } from '../behavior/behavior.module';
@@ -30,7 +31,7 @@ import { User } from '../../database/entities/user.entity';
     NewsModule,
   ],
   controllers: [AgentController],
-  providers: [AgentService, AgentLoop, AgentContextBuilder, AgentPrompt, AgentDecision, AgentMemory],
-  exports: [AgentService],
+  providers: [AgentService, AgentLoop, AgentContextBuilder, AgentPrompt, AgentDecision, AgentMemory, AgentToolsService],
+  exports: [AgentService, AgentToolsService],
 })
 export class AgentModule {}

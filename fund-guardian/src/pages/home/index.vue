@@ -8,7 +8,7 @@
         </view>
         <view class="nav-bar__right">
           <view class="nav-bar__bell" @tap="goNotifications">
-            <wd-icon name="bell" size="44rpx" color="#64748B" />
+            <CarbonIcon name="bell" size="22" color="#64748B" />
             <wd-badge v-if="unreadAlertCount > 0" :model-value="unreadAlertCount" />
           </view>
         </view>
@@ -21,7 +21,7 @@
     <view class="home-body" :style="{ paddingTop: statusBarHeight + 128 + 'px' }">
       <view v-if="fundStore.funds.length === 0" class="empty-state">
         <view class="empty-state__icon">
-          <wd-icon name="chart" size="96rpx" color="#CBD5E1" />
+          <CarbonIcon name="folder" size="48" color="#CBD5E1" />
         </view>
         <text class="empty-state__title">还没有持仓数据</text>
         <text class="empty-state__desc">添加你的第一只基金，开始风险分析</text>
@@ -35,7 +35,7 @@
         <DemoBlock title="AI 风险 Agent" transparent>
           <view class="agent-header">
             <view class="agent-icon-wrap">
-              <wd-icon name="chat" size="40rpx" color="#6B7FD7"></wd-icon>
+              <CarbonIcon name="chat" size="20" color="#6B7FD7" />
             </view>
             <text class="agent-title">AI 风险 Agent</text>
             <view class="agent-status" :class="{ running: agentStore.isRunning }">
@@ -130,7 +130,7 @@
 
         <DemoBlock v-else>
           <view class="safe-notice-card__icon">
-            <wd-icon name="check-outline" size="40rpx" color="#6B7FD7" />
+            <CarbonIcon name="success" size="20" color="#6B7FD7" />
           </view>
           <text class="safe-notice-card__text">当前持仓风险可控</text>
         </DemoBlock>
@@ -174,7 +174,7 @@
             <text class="section-title">场景压力测试</text>
             <view class="stress-card__more" @tap="goRiskCenter">
               <text class="stress-card__more-text">查看详情</text>
-              <wd-icon name="arrow-right" size="28rpx" color="#94A3B8" />
+              <CarbonIcon name="arrow-right" size="14" color="#94A3B8" />
             </view>
           </view>
           <view class="stress-list">
@@ -200,10 +200,7 @@
           </view>
         </DemoBlock>
 
-        <view class="card reduce-card" v-if="latestReduceRecord">
-          <view class="section-title-row">
-            <text class="section-title">最近减仓记录</text>
-          </view>
+        <DemoBlock title="最近减仓记录" v-if="latestReduceRecord">
           <view class="reduce-item">
             <view class="reduce-item__info">
               <text class="reduce-item__fund">{{ latestReduceFundName }}</text>
@@ -214,12 +211,12 @@
               <text class="reduce-item__time">{{ formatTime(latestReduceRecord.createTime) }}</text>
             </view>
           </view>
-        </view>
+        </DemoBlock>
 
         <DemoBlock title="AI 风险解读" card @tap="goAIAssistant">
           <view class="ai-card__header">
             <view class="ai-card__icon-wrap">
-              <wd-icon name="chat" size="36rpx" color="#6B7FD7" />
+              <CarbonIcon name="chat" size="18" color="#6B7FD7" />
             </view>
             <text class="ai-card__title">AI 风险解读</text>
             <wd-icon name="arrow-right" size="28rpx" color="#94A3B8" custom-style="margin-left: auto;" />
@@ -242,6 +239,9 @@
         <view style="height: 32rpx;" />
       </template>
     </view>
+    
+    <!-- 小基助手悬浮按钮 -->
+    <XiaojiAssistant />
   </view>
 </template>
 
@@ -253,6 +253,7 @@ import { behaviorApi, riskApi, portfolioApi } from '@/services/api'
 import { SECTOR_COLORS } from '@/types'
 import type { RiskAlert } from '@/types'
 import DemoBlock from '@/components/DemoBlock.vue'
+import XiaojiAssistant from '@/components/xiaoji-assistant/index.vue'
 
 const fundStore = useFundStore()
 const accountStore = useAccountStore()
@@ -1001,14 +1002,14 @@ function goNotifications() {
   &__header {
     display: flex;
     align-items: center;
-    gap: 12rpx;
-    margin-bottom: 16rpx;
+    gap: 16rpx;
+    margin-bottom: 20rpx;
   }
 
   &__icon-wrap {
-    width: 48rpx;
-    height: 48rpx;
-    border-radius: 12rpx;
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
     background: #EFF2FF;
     display: flex;
     align-items: center;
@@ -1019,6 +1020,7 @@ function goNotifications() {
     font-size: 28rpx;
     font-weight: 600;
     color: #1E293B;
+    flex: 1;
   }
 
   &__text {
@@ -1032,39 +1034,111 @@ function goNotifications() {
   &__content {
     display: flex;
     align-items: center;
-    gap: 20rpx;
+    gap: 16rpx;
   }
 
   &__icon-wrap {
-    flex-shrink: 0;
-    width: 72rpx;
-    height: 72rpx;
+    width: 56rpx;
+    height: 56rpx;
     border-radius: 50%;
-    background: #F0FDF4;
+    background: #F0F9FF;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   &__emoji {
-    font-size: 36rpx;
+    font-size: 32rpx;
   }
 
   &__info {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4rpx;
   }
 
   &__title {
     font-size: 28rpx;
     font-weight: 600;
     color: #1E293B;
+    margin-bottom: 4rpx;
   }
 
   &__desc {
     font-size: 24rpx;
+    color: #94A3B8;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-page {
+    background-color: #0F172A;
+  }
+
+  .nav-bar {
+    background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  }
+
+  .agent-card {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 2rpx solid rgba(107, 127, 215, 0.2);
+  }
+
+  .risk-ring__inner {
+    background: #1E293B;
+  }
+
+  .risk-ring__score {
+    color: #F8FAFC;
+  }
+
+  .sector-card__stat-value,
+  .reduce-item__fund,
+  .ai-card__title,
+  .growth-card__title {
+    color: #F8FAFC;
+  }
+
+  .risk-alert-item {
+    background: #1E293B;
+
+    &--high {
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    &--medium {
+      background: rgba(249, 115, 22, 0.1);
+    }
+
+    &--low {
+      background: rgba(14, 165, 233, 0.1);
+    }
+  }
+
+  .stress-item,
+  .reduce-item {
+    background: #1E293B;
+  }
+
+  .safe-notice-card__icon {
+    background: rgba(107, 127, 215, 0.1);
+  }
+
+  .safe-notice-card__text {
+    color: #F8FAFC;
+  }
+
+  .ai-card__icon-wrap {
+    background: rgba(107, 127, 215, 0.1);
+  }
+
+  .growth-card__icon-wrap {
+    background: rgba(14, 165, 233, 0.1);
+  }
+
+  .ai-card__text {
+    color: #CBD5E1;
+  }
+
+  .growth-card__desc {
     color: #94A3B8;
   }
 }
