@@ -131,7 +131,7 @@
       </view>
     </view>
 
-    <wd-popup v-model="showApiKeyPopup" position="bottom" custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom));">
+    <wd-popup v-model="showApiKeyPopup" position="bottom" :z-index="1000" root-portal safe-area-inset-bottom custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx 32rpx;">
       <view class="popup-title">设置 API Key</view>
       <view class="api-key-hint">
         <wd-icon name="info" size="14px" color="#6B7FD7"></wd-icon>
@@ -277,7 +277,7 @@
       <text class="disclaimer-text">本产品不构成投资建议，不承诺收益，不提供交易服务</text>
     </view>
 
-    <wd-popup v-model="showAddAccount" position="bottom" custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom));">
+    <wd-popup v-model="showAddAccount" position="bottom" :z-index="1000" root-portal safe-area-inset-bottom custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx 32rpx;">
       <view class="popup-title">添加新账户</view>
       <view class="form-item">
         <text class="form-label">账户名称</text>
@@ -308,7 +308,7 @@
       </wd-button>
     </wd-popup>
 
-    <wd-popup v-model="showClearConfirm" position="center" custom-style="border-radius: 24rpx; padding: 40rpx 32rpx; width: 560rpx;">
+    <wd-popup v-model="showClearConfirm" position="center" :z-index="1000" root-portal custom-style="border-radius: 24rpx; padding: 40rpx 32rpx; width: 560rpx;">
       <view class="confirm-title">确认清除数据</view>
       <view class="confirm-desc">此操作将清除所有持仓、记录和设置数据，且不可恢复。确定要继续吗？</view>
       <view class="confirm-btns">
@@ -321,7 +321,7 @@
       </view>
     </wd-popup>
 
-    <wd-popup v-model="showRiskDisclaimer" position="bottom" custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); max-height: 70vh;">
+    <wd-popup v-model="showRiskDisclaimer" position="bottom" :z-index="1000" root-portal safe-area-inset-bottom custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx 32rpx; max-height: 70vh;">
       <view class="popup-title">风险声明</view>
       <view class="disclaimer-content">
         <view class="disclaimer-block">
@@ -340,12 +340,12 @@
           <text class="disclaimer-block-text">使用本产品产生的任何投资损失，本产品不承担任何责任。用户应充分了解基金投资的风险，并根据自身情况做出审慎决策。</text>
         </view>
       </view>
-      <wd-button type="primary" block @click="showRiskDisclaimer = false" custom-style="margin-top: 24rpx; border-radius: 20rpx; background: #6B7FD7; height: 88rpx;">
+      <wd-button type="primary" block @click="showRiskDisclaimer = false" custom-style="margin-top: 32rpx; border-radius: 20rpx; background: #6B7FD7; height: 88rpx;">
         我已了解
       </wd-button>
     </wd-popup>
 
-    <wd-popup v-model="showUserAgreement" position="bottom" custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); max-height: 70vh;">
+    <wd-popup v-model="showUserAgreement" position="bottom" :z-index="1000" root-portal safe-area-inset-bottom custom-style="border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx 32rpx; max-height: 70vh;">
       <view class="popup-title">用户协议</view>
       <view class="disclaimer-content">
         <view class="disclaimer-block">
@@ -361,7 +361,7 @@
           <text class="disclaimer-block-text">所有数据仅存储在用户本地设备，不上传至任何服务器。用户可随时导出或清除数据。</text>
         </view>
       </view>
-      <wd-button type="primary" block @click="showUserAgreement = false" custom-style="margin-top: 24rpx; border-radius: 20rpx; background: #6B7FD7; height: 88rpx;">
+      <wd-button type="primary" block @click="showUserAgreement = false" custom-style="margin-top: 32rpx; border-radius: 20rpx; background: #6B7FD7; height: 88rpx;">
         我已了解
       </wd-button>
     </wd-popup>
