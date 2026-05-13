@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    DemoBlock: typeof import('./src/components/DemoBlock.vue')['default']
     FundCompareTable: typeof import('./src/components/xiaoji-assistant/cards/FundCompareTable.vue')['default']
     MultiChoice: typeof import('./src/components/xiaoji-assistant/cards/MultiChoice.vue')['default']
     SingleChoice: typeof import('./src/components/xiaoji-assistant/cards/SingleChoice.vue')['default']

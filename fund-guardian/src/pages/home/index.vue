@@ -32,7 +32,7 @@
 
       <template v-else>
         <!-- Agent状态卡 -->
-        <view v-if="agentStore.agentMessages.length > 0" class="card agent-card">
+        <DemoBlock title="AI 风险 Agent" transparent>
           <view class="agent-header">
             <view class="agent-icon-wrap">
               <wd-icon name="chat" size="40rpx" color="#6B7FD7"></wd-icon>
@@ -57,9 +57,9 @@
           <view v-if="agentStore.agentMessages.length === 0" class="agent-empty">
             <text class="agent-empty-text">Agent 正在监控你的持仓风险...</text>
           </view>
-        </view>
+        </DemoBlock>
 
-        <view class="card risk-index-card">
+        <DemoBlock title="情绪风险指数">
           <view class="risk-index-card__header">
             <text class="section-title">情绪风险指数</text>
             <wd-tag :type="riskTagType" plain custom-style="font-size: 24rpx;">
@@ -93,9 +93,9 @@
               </view>
             </view>
           </view>
-        </view>
+        </DemoBlock>
 
-        <view class="card risk-alert-card" v-if="visibleAlerts.length > 0">
+        <DemoBlock title="今日风险提示" v-if="visibleAlerts.length > 0">
           <view class="section-title-row">
             <text class="section-title">今日风险提示</text>
             <text class="risk-alert-card__count">{{ visibleAlerts.length }}条</text>
@@ -126,17 +126,16 @@
               </template>
             </wd-swipe-action>
           </view>
-        </view>
+        </DemoBlock>
 
-        <view class="card safe-notice-card" v-else>
+        <DemoBlock v-else>
           <view class="safe-notice-card__icon">
             <wd-icon name="check-outline" size="40rpx" color="#6B7FD7" />
           </view>
           <text class="safe-notice-card__text">当前持仓风险可控</text>
-        </view>
+        </DemoBlock>
 
-        <view class="card sector-card">
-          <text class="section-title">仓位暴露图</text>
+        <DemoBlock title="仓位暴露图">
           <view class="sector-chart">
             <view
               v-for="item in sectorList"
@@ -168,9 +167,9 @@
               <text class="sector-card__stat-value">{{ formattedCashRatio }}%</text>
             </view>
           </view>
-        </view>
+        </DemoBlock>
 
-        <view class="card stress-card">
+        <DemoBlock title="场景压力测试">
           <view class="section-title-row">
             <text class="section-title">场景压力测试</text>
             <view class="stress-card__more" @tap="goRiskCenter">
@@ -199,7 +198,7 @@
               </view>
             </view>
           </view>
-        </view>
+        </DemoBlock>
 
         <view class="card reduce-card" v-if="latestReduceRecord">
           <view class="section-title-row">
@@ -217,7 +216,7 @@
           </view>
         </view>
 
-        <view class="card ai-card" @tap="goAIAssistant">
+        <DemoBlock title="AI 风险解读" card @tap="goAIAssistant">
           <view class="ai-card__header">
             <view class="ai-card__icon-wrap">
               <wd-icon name="chat" size="36rpx" color="#6B7FD7" />
@@ -226,9 +225,9 @@
             <wd-icon name="arrow-right" size="28rpx" color="#94A3B8" custom-style="margin-left: auto;" />
           </view>
           <text class="ai-card__text">{{ aiRiskExplanation }}</text>
-        </view>
+        </DemoBlock>
 
-        <view class="card growth-card" v-if="growthStore.metrics.stableDays > 0">
+        <DemoBlock v-if="growthStore.metrics.stableDays > 0" card>
           <view class="growth-card__content">
             <view class="growth-card__icon-wrap">
               <text class="growth-card__emoji">🌱</text>
@@ -238,7 +237,7 @@
               <text class="growth-card__desc">保持理性，你的投资心态正在成长</text>
             </view>
           </view>
-        </view>
+        </DemoBlock>
 
         <view style="height: 32rpx;" />
       </template>
@@ -253,6 +252,7 @@ import { useFundStore, useAccountStore, useGrowthStore, useAgentStore } from '@/
 import { behaviorApi, riskApi, portfolioApi } from '@/services/api'
 import { SECTOR_COLORS } from '@/types'
 import type { RiskAlert } from '@/types'
+import DemoBlock from '@/components/DemoBlock.vue'
 
 const fundStore = useFundStore()
 const accountStore = useAccountStore()
