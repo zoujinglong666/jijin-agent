@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: fund-guardian-api
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_SYNC
+        value: false
+      - key: JWT_SECRET
+        fromEnvVar: JWT_SECRET
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: LLM_PROVIDER
+        value: deepseek
+      - key: LLM_API_KEY
+        fromEnvVar: LLM_API_KEY
+      - key: LLM_BASE_URL
+        value: https://api.deepseek.com
+      - key: LLM_MODEL
+        value: deepseek-v4-pro
+      - key: CORS_ORIGIN
+        fromEnvVar: CORS_ORIGIN
+
+databases:
+  - name: fundguardian-db
+    databaseName: fundguardian
+    user: postgres
+    plan: free
