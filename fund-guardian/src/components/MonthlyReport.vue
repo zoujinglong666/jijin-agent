@@ -126,8 +126,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useNotificationStore } from '../stores/notification'
+import { useAuthStore } from '@/store'
 
 const notificationStore = useNotificationStore()
+const authStore = useAuthStore()
 
 // 状态
 const selectedMonthIndex = ref(0)

@@ -29,7 +29,7 @@ export function isLoggedIn(): boolean {
   return !!getToken()
 }
 
-class ApiError extends Error {
+export class ApiError extends Error {
   code: number
   constructor(code: number, message: string) {
     super(message)
@@ -38,7 +38,7 @@ class ApiError extends Error {
   }
 }
 
-async function request<T>(options: RequestOptions): Promise<T> {
+export async function request<T>(options: RequestOptions): Promise<T> {
   const { method, url, data, noAuth } = options
   const header: Record<string, string> = { 'Content-Type': 'application/json' }
 
@@ -275,12 +275,24 @@ export const growthApi = {
 }
 
 export const newsApi = {
+  getNews(params: { category?: string; limit?: number }) {
+    const query = new URLSearchParams()
+    if (params.category) query.append('category', params.category)
+    if (params.limit) query.append('limit', params.limit.toString())
+    return request({ method: 'GET', url: `/news?${query.toString()}` })
+  },
   getEvents(sectors?: string[], limit?: number) {
     const params: string[] = []
     if (sectors) params.push(`sectors=${sectors.join(',')}`)
     if (limit) params.push(`limit=${limit}`)
     const query = params.length > 0 ? `?${params.join('&')}` : ''
     return request({ method: 'GET', url: `/news${query}` })
+  },
+  bookmarkNews(id: string) {
+    return request({ method: 'POST', url: `/news/${id}/bookmark` })
+  },
+  unbookmarkNews(id: string) {
+    return request({ method: 'DELETE', url: `/news/${id}/bookmark` })
   },
 }
 
@@ -358,6 +370,33 @@ export const fundDataApi = {
   },
 }
 
+export const marketApi = {
+  getFundData(code: string, forceRefresh?: boolean) {
+    return request<{ data: any }>({ method: 'GET', url: `/api/market/fund/${code}${forceRefresh ? '?forceRefresh=true' : ''}` })
+  },
+  getFundsData(codes: string[], forceRefresh?: boolean) {
+    return request<{ data: any }>({ method: 'GET', url: `/api/market/funds?codes=${codes.join(',')}${forceRefresh ? '&forceRefresh=true' : ''}` })
+  },
+  getSectorData(sector: string, forceRefresh?: boolean) {
+    return request<{ data: any }>({ method: 'GET', url: `/api/market/sector/${sector}${forceRefresh ? '?forceRefresh=true' : ''}` })
+  },
+  getMarketAlerts() {
+    return request<{ alerts: any[] }>({ method: 'GET', url: '/api/market/alerts' })
+  },
+  checkMarketAlerts() {
+    return request<{ alerts: any[] }>({ method: 'POST', url: '/api/market/alerts/check' })
+  },
+  createPortfolioSnapshot() {
+    return request<{ snapshot: any }>({ method: 'POST', url: '/api/market/snapshot' })
+  },
+  getPortfolioSnapshots() {
+    return request<{ snapshots: any[] }>({ method: 'GET', url: '/api/market/snapshots' })
+  },
+  getPortfolioSnapshot(id: string) {
+    return request<{ snapshot: any }>({ method: 'GET', url: `/api/market/snapshot/${id}` })
+  },
+}
+
 export const notificationApi = {
   getList(limit?: number) {
     const query = limit ? `?limit=${limit}` : ''
@@ -371,6 +410,61 @@ export const notificationApi = {
   },
   markAllRead() {
     return request<{ count: number }>({ method: 'PUT', url: '/notifications/read-all' })
+  },
+}
+
+export const behaviorInterventionApi = {
+  getInterventions() {
+    return request<{ interventions: any[] }>({ method: 'GET', url: '/notification/interventions' })
+  },
+  checkInterventions() {
+    return request<{ interventions: any[] }>({ method: 'POST', url: '/notification/interventions/check' })
+  },
+  markInterventionRead(id: string) {
+    return request<{ success: boolean }>({ method: 'POST', url: `/notification/interventions/${id}/mark-read` })
+  },
+  ignoreIntervention(id: string) {
+    return request<{ success: boolean }>({ method: 'POST', url: `/notification/interventions/${id}/ignore` })
+  },
+  generateMonthlyReport(month?: string) {
+    return request<{ report: any }>({ method: 'POST', url: '/notification/reports/generate', data: { month } })
+  },
+  getMonthlyReport(date?: string) {
+    const query = date ? `?date=${date}` : ''
+    return request<{ report: any }>({ method: 'GET', url: `/notification/reports/monthly${query}` })
+  },
+  getReportHistory() {
+    return request<{ reports: any[] }>({ method: 'GET', url: '/notification/reports/history' })
+  },
+}
+
+export const syncApi = {
+  getPlatforms() {
+    return request<{ platforms: string[] }>({ method: 'GET', url: '/api/sync/platforms' })
+  },
+  getSyncStatus() {
+    return request<{ status: Record<string, any> }>({ method: 'GET', url: '/api/sync/status' })
+  },
+  connectPlatform(platform: string, credentials: Record<string, any>) {
+    return request<{ success: boolean }>({ method: 'POST', url: '/api/sync/connect', data: { platform, credentials } })
+  },
+  disconnectPlatform(platform: string) {
+    return request<{ success: boolean }>({ method: 'POST', url: '/api/sync/disconnect', data: { platform } })
+  },
+  syncData(platform?: string) {
+    return request<{ success: boolean }>({ method: 'POST', url: '/api/sync/sync', data: { platform } })
+  },
+  setAutoSync(enabled: boolean, interval?: number) {
+    return request<{ success: boolean }>({ method: 'POST', url: '/api/sync/sync/auto', data: { enabled, interval } })
+  },
+  getSyncHistory(limit?: number) {
+    return request<{ history: any[] }>({ method: 'GET', url: `/api/sync/sync/history${limit ? `?limit=${limit}` : ''}` })
+  },
+  getSyncSettings() {
+    return request<{ settings: any }>({ method: 'GET', url: '/api/sync/settings' })
+  },
+  updateSyncSettings(settings: Record<string, any>) {
+    return request<{ success: boolean }>({ method: 'POST', url: '/api/sync/settings', data: settings })
   },
 }
 

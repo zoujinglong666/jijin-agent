@@ -185,6 +185,27 @@
         <text class="section-title">数据管理</text>
       </view>
       <view class="card">
+        <view class="setting-item" @tap="navigateToSync">
+          <view class="setting-left">
+            <CarbonIcon name="sync" size="18" color="#6B7FD7" />
+            <text class="setting-label">数据同步</text>
+          </view>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
+        </view>
+        <view class="setting-item" @tap="navigateToGrowth">
+          <view class="setting-left">
+            <CarbonIcon name="trophy" size="18" color="#8B9DC3" />
+            <text class="setting-label">投资成长</text>
+          </view>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
+        </view>
+        <view class="setting-item" @tap="navigateToNews">
+          <view class="setting-left">
+            <CarbonIcon name="news" size="18" color="#8B9DC3" />
+            <text class="setting-label">市场资讯</text>
+          </view>
+          <CarbonIcon name="arrow-right" size="14" color="#CBD5E1" />
+        </view>
         <view class="setting-item" @tap="exportData">
           <view class="setting-left">
             <CarbonIcon name="download" size="18" color="#64748B" />
@@ -485,6 +506,18 @@ onMounted(() => {
 
 function exportData() {
   uni.showToast({ title: '数据导出功能开发中', icon: 'none' })
+}
+
+function navigateToSync() {
+  uni.navigateTo({ url: '/pages/sync/index' })
+}
+
+function navigateToGrowth() {
+  uni.navigateTo({ url: '/pages/growth/index' })
+}
+
+function navigateToNews() {
+  uni.navigateTo({ url: '/pages/news/index' })
 }
 
 function clearAllData() {

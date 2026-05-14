@@ -10,4 +10,8 @@ export default defineConfig({
     }),
     uni(),
   ],
+  server: {
+    port: 9123,
+    host: '0.0.0.0'
+  }
 });

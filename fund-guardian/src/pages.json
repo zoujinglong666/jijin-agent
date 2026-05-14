@@ -79,6 +79,24 @@
       "style": {
         "navigationBarTitleText": "消息中心"
       }
+    },
+    {
+      "path": "pages/sync/index",
+      "style": {
+        "navigationBarTitleText": "数据同步"
+      }
+    },
+    {
+      "path": "pages/growth/index",
+      "style": {
+        "navigationBarTitleText": "投资成长"
+      }
+    },
+    {
+      "path": "pages/news/index",
+      "style": {
+        "navigationBarTitleText": "市场资讯"
+      }
     }
   ],
   "globalStyle": {

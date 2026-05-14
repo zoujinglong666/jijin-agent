@@ -75,8 +75,10 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useNotificationStore } from '../stores/notification'
+import { useAuthStore } from '@/store'
 
 const notificationStore = useNotificationStore()
+const authStore = useAuthStore()
 
 // 计算属性
 const interventions = computed(() => notificationStore.interventions)
@@ -150,6 +152,14 @@ const ignoreIntervention = async (id: string) => {
 
 // 手动检测干预
 const checkInterventions = async () => {
+  if (!authStore.isLoggedIn) {
+    uni.showToast({
+      title: '请先登录',
+      icon: 'none'
+    })
+    return
+  }
+  
   try {
     uni.showLoading({ title: '检测中...' })
     await notificationStore.checkBehaviorInterventions()
@@ -169,7 +179,9 @@ const checkInterventions = async () => {
 
 // 页面加载时初始化
 onMounted(() => {
-  notificationStore.getBehaviorInterventions()
+  if (authStore.isLoggedIn) {
+    notificationStore.getBehaviorInterventions()
+  }
 })
 </script>
 

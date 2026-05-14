@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { http } from '../utils/http'
+import { request } from '../services/api'
 
 export interface PlatformStatus {
   platform: string
@@ -38,8 +38,8 @@ export const useSyncStore = defineStore('sync', () => {
   // 获取支持的平台列表
   const getSupportedPlatforms = async (): Promise<string[]> => {
     try {
-      const response = await http.get('/api/sync/platforms')
-      return response.data.platforms || []
+      const result = await request<{ platforms: string[] }>({ method: 'GET', url: '/api/sync/platforms' })
+      return result.platforms || []
     } catch (error) {
       console.error('获取支持平台失败:', error)
       return []
@@ -49,8 +49,8 @@ export const useSyncStore = defineStore('sync', () => {
   // 获取用户同步状态
   const getSyncStatus = async (): Promise<Record<string, any>> => {
     try {
-      const response = await http.get('/api/sync/status')
-      return response.data.status || {}
+      const result = await request<{ status: Record<string, any> }>({ method: 'GET', url: '/api/sync/status' })
+      return result.status || {}
     } catch (error) {
       console.error('获取同步状态失败:', error)
       return {}
@@ -60,11 +60,12 @@ export const useSyncStore = defineStore('sync', () => {
   // 连接平台
   const connectPlatform = async (platform: string, credentials: any): Promise<boolean> => {
     try {
-      const response = await http.post('/api/sync/connect', {
-        platform,
-        credentials
+      const result = await request<{ success: boolean }>({ 
+        method: 'POST', 
+        url: '/api/sync/connect',
+        data: { platform, credentials }
       })
-      return response.data.success || false
+      return result.success || false
     } catch (error) {
       console.error('连接平台失败:', error)
       throw error
@@ -74,8 +75,12 @@ export const useSyncStore = defineStore('sync', () => {
   // 断开平台连接
   const disconnectPlatform = async (platform: string): Promise<boolean> => {
     try {
-      const response = await http.post('/api/sync/disconnect', { platform })
-      return response.data.success || false
+      const result = await request<{ success: boolean }>({ 
+        method: 'POST', 
+        url: '/api/sync/disconnect', 
+        data: { platform } 
+      })
+      return result.success || false
     } catch (error) {
       console.error('断开平台失败:', error)
       throw error
@@ -85,8 +90,11 @@ export const useSyncStore = defineStore('sync', () => {
   // 同步用户数据
   const syncAllPlatforms = async (): Promise<boolean> => {
     try {
-      const response = await http.post('/api/sync/sync')
-      return response.data.success || false
+      const result = await request<{ success: boolean }>({ 
+        method: 'POST', 
+        url: '/api/sync/sync' 
+      })
+      return result.success || false
     } catch (error) {
       console.error('同步失败:', error)
       throw error
@@ -96,11 +104,12 @@ export const useSyncStore = defineStore('sync', () => {
   // 设置自动同步
   const setAutoSync = async (enabled: boolean, interval?: number): Promise<boolean> => {
     try {
-      const response = await http.post('/api/sync/sync/auto', {
-        enabled,
-        interval
+      const result = await request<{ success: boolean }>({ 
+        method: 'POST', 
+        url: '/api/sync/sync/auto',
+        data: { enabled, interval }
       })
-      return response.data.success || false
+      return result.success || false
     } catch (error) {
       console.error('设置自动同步失败:', error)
       throw error
@@ -110,8 +119,11 @@ export const useSyncStore = defineStore('sync', () => {
   // 获取同步历史
   const getSyncHistory = async (limit: number = 10): Promise<SyncHistoryItem[]> => {
     try {
-      const response = await http.get(`/api/sync/sync/history?limit=${limit}`)
-      return response.data.history || []
+      const result = await request<{ history: SyncHistoryItem[] }>({ 
+        method: 'GET', 
+        url: `/api/sync/sync/history?limit=${limit}` 
+      })
+      return result.history || []
     } catch (error) {
       console.error('获取同步历史失败:', error)
       return []
@@ -121,8 +133,11 @@ export const useSyncStore = defineStore('sync', () => {
   // 获取同步设置
   const getSyncSettings = async (): Promise<SyncSettings> => {
     try {
-      const response = await http.get('/api/sync/settings')
-      return response.data.settings || {
+      const result = await request<{ settings: SyncSettings }>({ 
+        method: 'GET', 
+        url: '/api/sync/settings' 
+      })
+      return result.settings || {
         autoSync: false,
         syncInterval: 24,
         platforms: {}
@@ -140,8 +155,12 @@ export const useSyncStore = defineStore('sync', () => {
   // 更新同步设置
   const updateSyncSettings = async (settings: Partial<SyncSettings>): Promise<boolean> => {
     try {
-      const response = await http.post('/api/sync/settings', settings)
-      return response.data.success || false
+      const result = await request<{ success: boolean }>({ 
+        method: 'POST', 
+        url: '/api/sync/settings',
+        data: settings
+      })
+      return result.success || false
     } catch (error) {
       console.error('更新同步设置失败:', error)
       throw error
