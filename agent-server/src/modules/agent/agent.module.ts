@@ -13,6 +13,7 @@ import { PortfolioModule } from '../portfolio/portfolio.module';
 import { BehaviorModule } from '../behavior/behavior.module';
 import { RiskModule } from '../risk/risk.module';
 import { NewsModule } from '../news/news.module';
+import { NotificationModule } from '../notification/notification.module';
 import { DatabaseModule } from '../../database/database.module';
 import { RiskSnapshot } from '../../database/entities/risk-snapshot.entity';
 import { EmotionHistory } from '../../database/entities/emotion-history.entity';
@@ -29,6 +30,7 @@ import { User } from '../../database/entities/user.entity';
     BehaviorModule,
     RiskModule,
     NewsModule,
+    NotificationModule,
   ],
   controllers: [AgentController],
   providers: [AgentService, AgentLoop, AgentContextBuilder, AgentPrompt, AgentDecision, AgentMemory, AgentToolsService],

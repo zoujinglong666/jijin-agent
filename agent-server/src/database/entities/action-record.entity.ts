@@ -1,27 +1,51 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, Index } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
 
 @Entity('action_records')
-@Index('IDX_action_records_userId_createTime', ['userId', 'createTime'])
+@Index(['userId', 'createTime'])
+@Index(['actionType', 'createTime'])
 export class ActionRecord {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Column({ type: 'uuid' })
-  @Index('IDX_action_records_userId')
+  @Column({ type: 'varchar', length: 50 })
   userId: string;
 
-  @Column({ length: 50 })
-  fundId: string;
+  @Column({ type: 'varchar', length: 50 })
+  actionType: 'add' | 'remove' | 'adjust' | 'rebalance' | 'sell_all' | 'buy_all';
 
-  @Column({ length: 20 })
-  actionType: string;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  fundCode?: string;
 
-  @Column({ type: 'decimal', precision: 5, scale: 2, default: 0 })
-  ratio: number;
+  @Column({ type: 'varchar', length: 100 })
+  fundName: string;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+  amount?: number;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+  units?: number;
+
+  @Column({ type: 'decimal', precision: 10, scale: 4, nullable: true })
+  price?: number;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+  previousAmount?: number;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
+  previousUnits?: number;
+
+  @Column({ type: 'varchar', length: 50, nullable: true })
+  reason?: string;
 
   @Column({ type: 'text', nullable: true })
-  reason: string;
+  note?: string;
+
+  @Column({ type: 'json', nullable: true })
+  metadata?: Record<string, any>;
 
   @CreateDateColumn()
   createTime: Date;
+
+  @UpdateDateColumn()
+  updateTime: Date;
 }

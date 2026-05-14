@@ -11,6 +11,7 @@ import { PortfolioService } from '../portfolio/portfolio.service';
 import { BehaviorService } from '../behavior/behavior.service';
 import { RiskService } from '../risk/risk.service';
 import { NewsService } from '../news/news.service';
+import { NotificationService } from '../notification/notification.service';
 import type { AgentOutput } from '../../common/types';
 
 @Injectable()
@@ -29,6 +30,7 @@ export class AgentService {
     private behaviorService: BehaviorService,
     private riskService: RiskService,
     private newsService: NewsService,
+    private notificationService: NotificationService,
   ) {}
 
   async getActiveUserIds(): Promise<string[]> {
@@ -76,6 +78,15 @@ export class AgentService {
       );
       await this.agentMemory.saveAgentOutput(userId, output);
 
+      if (output.shouldNotify) {
+        await this.notificationService.createAndPush(userId, {
+          type: 'agent_alert',
+          title: output.insight,
+          content: output.riskExplanation,
+          level: context.risk.score >= 70 ? 'high' : context.risk.score >= 50 ? 'medium' : 'low',
+        });
+      }
+
       return output;
     } catch (error) {
       this.logger.error(`Agent run failed for user ${userId}: ${error instanceof Error ? error.message : String(error)}`, error instanceof Error ? error.stack : undefined);
@@ -96,6 +107,12 @@ export class AgentService {
     const risk = await this.riskService.calculateRisk(userId);
     const behavior = await this.behaviorService.getBehaviorState(userId);
     if (risk.score > 80 || behavior.level === 'panic') {
+      await this.notificationService.createAndPush(userId, {
+        type: 'behavior_alert',
+        title: '检测到恐慌行为',
+        content: '你近期查看账户频率异常偏高，当前仓位可能超出心理承受范围，请先深呼吸后再做任何操作决定。',
+        level: 'high',
+      });
       return this.runForUser(userId);
     }
     return null;
@@ -107,6 +124,13 @@ export class AgentService {
     for (const userId of userIds) {
       const userSectors = Object.keys(await this.portfolioService.getSectorRatios(userId));
       if (event.relatedSectors?.some((s: string) => userSectors.includes(s))) {
+        await this.notificationService.createAndPush(userId, {
+          type: 'market_alert',
+          title: `市场事件影响你的持仓`,
+          content: `${event.title}，涉及你的${userSectors.filter(s => event.relatedSectors?.includes(s)).join('、')}板块持仓，请关注风险变化。`,
+          level: event.impactLevel === 'high' ? 'high' : 'medium',
+          sector: event.relatedSectors?.[0],
+        });
         await this.runForUser(userId);
       }
     }

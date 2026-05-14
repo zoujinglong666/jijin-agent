@@ -73,6 +73,12 @@
       "style": {
         "navigationBarTitleText": "后悔模拟器"
       }
+    },
+    {
+      "path": "pages/notifications/index",
+      "style": {
+        "navigationBarTitleText": "消息中心"
+      }
     }
   ],
   "globalStyle": {

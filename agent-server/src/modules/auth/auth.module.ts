@@ -8,6 +8,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../../database/entities/user.entity';
+import { SeedModule } from '../seed/seed.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { User } from '../../database/entities/user.entity';
         signOptions: { expiresIn: configService.get('JWT_EXPIRES_IN', '7d') },
       }),
     }),
+    SeedModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, JwtAuthGuard],

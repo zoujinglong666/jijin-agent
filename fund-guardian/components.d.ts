@@ -7,8 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BehaviorIntervention: typeof import('./src/components/BehaviorIntervention.vue')['default']
+    CarbonIcon: typeof import('./src/components/CarbonIcon.vue')['default']
     DemoBlock: typeof import('./src/components/DemoBlock.vue')['default']
     FundCompareTable: typeof import('./src/components/xiaoji-assistant/cards/FundCompareTable.vue')['default']
+    MonthlyReport: typeof import('./src/components/MonthlyReport.vue')['default']
     MultiChoice: typeof import('./src/components/xiaoji-assistant/cards/MultiChoice.vue')['default']
     SingleChoice: typeof import('./src/components/xiaoji-assistant/cards/SingleChoice.vue')['default']
     SliderCard: typeof import('./src/components/xiaoji-assistant/cards/SliderCard.vue')['default']

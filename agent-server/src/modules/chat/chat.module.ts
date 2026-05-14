@@ -8,9 +8,11 @@ import { LlmModule } from '../llm/llm.module';
 import { PortfolioModule } from '../portfolio/portfolio.module';
 import { RiskModule } from '../risk/risk.module';
 import { BehaviorModule } from '../behavior/behavior.module';
+import { NewsModule } from '../news/news.module';
+import { AgentModule } from '../agent/agent.module';
 
 @Module({
-  imports: [DatabaseModule, TypeOrmModule.forFeature([User]), LlmModule, PortfolioModule, RiskModule, BehaviorModule],
+  imports: [DatabaseModule, TypeOrmModule.forFeature([User]), LlmModule, PortfolioModule, RiskModule, BehaviorModule, NewsModule, AgentModule],
   controllers: [ChatController],
   providers: [ChatService],
   exports: [ChatService],

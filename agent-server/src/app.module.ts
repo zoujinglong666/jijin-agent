@@ -16,6 +16,10 @@ import { RegretModule } from './modules/regret/regret.module';
 import { GrowthModule } from './modules/growth/growth.module';
 import { ChatModule } from './modules/chat/chat.module';
 import { HealthModule } from './modules/health/health.module';
+import { FundDataModule } from './modules/fund-data/fund-data.module';
+import { NotificationModule } from './modules/notification/notification.module';
+import { SyncModule } from './modules/sync/sync.module';
+import { MarketModule } from './modules/market/market.module';
 
 @Module({
   imports: [
@@ -51,6 +55,10 @@ import { HealthModule } from './modules/health/health.module';
     GrowthModule,
     ChatModule,
     HealthModule,
+    FundDataModule,
+    NotificationModule,
+    SyncModule,
+    MarketModule,
   ],
   providers: [
     {

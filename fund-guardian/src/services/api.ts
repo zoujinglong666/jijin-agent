@@ -316,7 +316,6 @@ export const llmApi = {
             return
           }
           if (res.statusCode !== 200) {
-            // 尝试从统一结构中提取错误信息
             const result = res.data as any
             const errMsg = result?.message || `API Error: ${res.statusCode}`
             reject(new ApiError(result?.code || 10000, errMsg))
@@ -346,4 +345,57 @@ export const llmApi = {
   setApiKey(apiKey: string) {
     return request<{ hasKey: boolean; maskedKey: string }>({ method: 'PUT', url: '/llm/key', data: { apiKey } })
   },
+}
+
+export const fundDataApi = {
+  search(keyword: string, limit?: number) {
+    const params = [`keyword=${encodeURIComponent(keyword)}`]
+    if (limit) params.push(`limit=${limit}`)
+    return request<{ results: FundSearchResult[] }>({ method: 'GET', url: `/fund-data/search?${params.join('&')}` })
+  },
+  getDetail(code: string) {
+    return request<FundSearchResult>({ method: 'GET', url: `/fund-data/detail?code=${code}` })
+  },
+}
+
+export const notificationApi = {
+  getList(limit?: number) {
+    const query = limit ? `?limit=${limit}` : ''
+    return request<{ list: NotificationItem[] }>({ method: 'GET', url: `/notifications${query}` })
+  },
+  getUnreadCount() {
+    return request<{ count: number }>({ method: 'GET', url: '/notifications/unread-count' })
+  },
+  markRead(id: number) {
+    return request({ method: 'PUT', url: `/notifications/${id}/read` })
+  },
+  markAllRead() {
+    return request<{ count: number }>({ method: 'PUT', url: '/notifications/read-all' })
+  },
+}
+
+export interface FundSearchResult {
+  code: string
+  name: string
+  type: string
+  sector: string
+  latestNav: number | null
+  accNav: number | null
+  dayChange: number | null
+  weekChange: number | null
+  monthChange: number | null
+  threeMonthChange: number | null
+  yearChange: number | null
+  navDate: string | null
+}
+
+export interface NotificationItem {
+  id: number
+  type: string
+  title: string
+  content: string
+  level: string
+  sector?: string
+  read: boolean
+  createdAt: string
 }

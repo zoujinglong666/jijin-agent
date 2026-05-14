@@ -425,7 +425,7 @@ function goAIAssistant() {
 }
 
 function goNotifications() {
-  uni.navigateTo({ url: '/pages/risk/index' })
+  uni.navigateTo({ url: '/pages/notifications/index' })
 }
 </script>
 

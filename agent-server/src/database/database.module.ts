@@ -10,8 +10,10 @@ import { EmotionHistory } from './entities/emotion-history.entity';
 import { NewsEvent } from './entities/news-event.entity';
 import { AgentOutputRecord } from './entities/agent-output.entity';
 import { GrowthMetricsEntity } from './entities/growth-metrics.entity';
+import { NotificationEntity } from './entities/notification.entity';
+import { FundCacheEntity } from './entities/fund-cache.entity';
 
-const entities = [User, Fund, ActionRecord, BehaviorLog, RiskSnapshot, EmotionHistory, NewsEvent, AgentOutputRecord, GrowthMetricsEntity];
+const entities = [User, Fund, ActionRecord, BehaviorLog, RiskSnapshot, EmotionHistory, NewsEvent, AgentOutputRecord, GrowthMetricsEntity, NotificationEntity, FundCacheEntity];
 
 @Module({
   imports: [

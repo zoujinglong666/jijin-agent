@@ -20,6 +20,9 @@
     <wd-tabs v-model="activeTab" custom-class="portfolio-tabs">
       <wd-tab name="all" title="全部持仓" />
       <wd-tab name="sector" title="主题聚合" />
+      <wd-tab name="behavior" title="行为分析" />
+      <wd-tab name="reports" title="月度报告" />
+      <wd-tab name="sync" title="数据同步" />
     </wd-tabs>
 
     <view v-if="activeTab === 'all'" class="tab-content">
@@ -125,6 +128,30 @@
       </view>
     </view>
 
+    <!-- 行为分析标签页 -->
+    <view v-if="activeTab === 'behavior'" class="tab-content">
+      <BehaviorIntervention />
+    </view>
+
+    <!-- 月度报告标签页 -->
+    <view v-if="activeTab === 'reports'" class="tab-content">
+      <MonthlyReport />
+    </view>
+
+    <!-- 数据同步标签页 -->
+    <view v-if="activeTab === 'sync'" class="tab-content">
+      <view class="sync-section">
+        <view class="sync-header">
+          <text class="sync-title">数据同步管理</text>
+          <button @click="goToSync" class="sync-btn">管理同步</button>
+        </view>
+        <view class="sync-info">
+          <text class="sync-desc">自动同步您的基金持仓数据</text>
+          <text class="sync-status">{{ syncStatusText }}</text>
+        </view>
+      </view>
+    </view>
+
     <view class="fab-btn" @click="goToAdd">
       <CarbonIcon name="add" size="24" color="#FFFFFF" />
     </view>
@@ -155,15 +182,27 @@ import { onShow } from '@dcloudio/uni-app'
 import { useFundStore } from '@/store'
 import { SECTOR_COLORS } from '@/types'
 import type { Fund, SectorType } from '@/types'
+import BehaviorIntervention from '@/components/BehaviorIntervention.vue'
+import MonthlyReport from '@/components/MonthlyReport.vue'
 
 const fundStore = useFundStore()
 const activeTab = ref<string>('all')
 const deletePopupVisible = ref(false)
 const deleteTarget = ref<Fund | null>(null)
+const syncStatusText = ref('未同步')
 
 onShow(async () => {
   await fundStore.loadFunds()
   await fundStore.loadAnalysis()
+  
+  // 更新同步状态文本
+  const lastSync = uni.getStorageSync('lastSyncTime')
+  if (lastSync) {
+    const date = new Date(lastSync)
+    syncStatusText.value = `上次同步: ${date.toLocaleDateString('zh-CN')}`
+  } else {
+    syncStatusText.value = '未同步'
+  }
 })
 
 const totalAmount = computed(() => fundStore.totalAmount)
@@ -222,6 +261,10 @@ function goToDetail(fundId: string) {
 
 function goToAdd() {
   uni.navigateTo({ url: '/pages/add-fund/index' })
+}
+
+function goToSync() {
+  uni.navigateTo({ url: '/pages/sync/index' })
 }
 
 function confirmDelete(fund: Fund) {
@@ -526,5 +569,51 @@ function doDelete() {
 
 .text-danger {
   color: #EF4444;
+}
+
+// 数据同步样式
+.sync-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.sync-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.sync-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.sync-btn {
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 8rpx;
+  padding: 8rpx 16rpx;
+  font-size: 24rpx;
+}
+
+.sync-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sync-desc {
+  font-size: 24rpx;
+  color: #94A3B8;
+}
+
+.sync-status {
+  font-size: 24rpx;
+  color: #007AFF;
 }
 </style>

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,13 +6,17 @@ import * as bcrypt from 'bcryptjs';
 import { User } from '../../database/entities/user.entity';
 import { BizException } from '../../common/exceptions/biz.exception';
 import { ErrorCode } from '../../common/constants/error-code';
+import { SeedService } from '../seed/seed.service';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
     private jwtService: JwtService,
+    private seedService: SeedService,
   ) {}
 
   validatePasswordStrength(password: string): void {
@@ -55,6 +59,10 @@ export class AuthService {
       riskPreference: riskPreference || 'balanced',
     });
     await this.userRepository.save(user);
+
+    this.seedService.seedDemoData(user.id).catch(err => {
+      this.logger.warn(`Seed demo data failed: ${err instanceof Error ? err.message : String(err)}`);
+    });
 
     const token = this.generateToken(user);
     return { user, token };
