@@ -30,20 +30,20 @@ export class User {
   llmApiKey: string;
 
   // 新增字段：支持数据同步
-  @Column({ name: 'syncplatform', length: 20, nullable: true })
-  syncPlatform: string;
+  @Column({ name: 'syncplatform', type: 'varchar', length: 20, nullable: true })
+  syncPlatform: string | null;
 
   @Column({ name: 'lastsynctime', type: 'timestamp', nullable: true })
-  lastSyncTime: Date;
+  lastSyncTime: Date | null;
 
-  @Column({ name: 'synctoken', length: 500, nullable: true })
-  syncToken: string;
+  @Column({ name: 'synctoken', type: 'varchar', length: 500, nullable: true })
+  syncToken: string | null;
 
   @Column({ name: 'synctokenexpiry', type: 'timestamp', nullable: true })
-  syncTokenExpiry: Date;
+  syncTokenExpiry: Date | null;
 
   // 新增字段：支持行为分析和提醒
-  @Column({ name: 'notificationpreferences', type: 'json', nullable: true })
+  @Column({ name: 'notificationpreferences', type: 'jsonb', nullable: true })
   notificationPreferences: Record<string, any>;
 
   @Column({ name: 'interventionenabled', default: true })

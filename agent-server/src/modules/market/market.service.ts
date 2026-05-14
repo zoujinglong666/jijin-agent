@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { firstValueFrom } from 'rxjs';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import { Fund, User } from '../../database/entities';
 
 export interface FundQuote {
   fundCode: string;
@@ -47,10 +48,10 @@ export class MarketService {
 
   constructor(
     private readonly httpService: HttpService,
-    @InjectRepository('Fund')
-    private fundRepository: Repository<any>,
-    @InjectRepository('User')
-    private userRepository: Repository<any>,
+    @InjectRepository(Fund)
+    private fundRepository: Repository<Fund>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
   /**
@@ -71,15 +72,15 @@ export class MarketService {
       }
       return quote;
     } catch (error) {
-      this.logger.error(`Failed to fetch quote for ${fundCode}:`, error);
-      return cached || null;
+      this.logger.error(`Failed to fetch quote for fund ${fundCode}:`, error);
+      return null;
     }
   }
 
   /**
-   * 批量获取基金行情
+   * 获取多个基金的行情
    */
-  async getFundQuotes(fundCodes: string[]): Promise<FundQuote[]> {
+  async getMultipleFundQuotes(fundCodes: string[]): Promise<FundQuote[]> {
     const quotes: FundQuote[] = [];
     
     for (const code of fundCodes) {
@@ -93,155 +94,78 @@ export class MarketService {
   }
 
   /**
-   * 从天天基金API获取基金行情
+   * 从API获取基金实时行情
    */
   private async fetchFundQuote(fundCode: string): Promise<FundQuote | null> {
     try {
-      // 尝试多个数据源
-      let quote = await this.fetchFromTiantian(fundCode);
-      if (!quote) {
-        quote = await this.fetchFromEastmoney(fundCode);
-      }
-      return quote;
-    } catch (error) {
-      this.logger.error(`Failed to fetch quote from all sources for ${fundCode}:`, error);
-      return null;
-    }
-  }
-
-  /**
-   * 从天天基金获取数据
-   */
-  private async fetchFromTiantian(fundCode: string): Promise<FundQuote | null> {
-    try {
+      // 使用天天基金网的API
       const response = await firstValueFrom(
-        this.httpService.get('https://fundgz.1234567.com.cn/js/' + fundCode + '.js', {
+        this.httpService.get('https://fundmobapi.eastmoney.com/FundMApi/FundBaseInformation.ashx', {
           params: {
-            rt: Date.now(),
+            deviceid: 'default',
+            version: '6.3.8',
+            product: 'EFund',
+            plat: 'Iphone',
+            FCodes: fundCode,
           },
           headers: {
-            'Referer': 'https://fund.eastmoney.com/',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X)',
           },
         })
       );
 
-      // 解析返回的JSONP格式数据
-      const dataStr = response.data;
-      if (dataStr && dataStr.startsWith('jsonpgz(')) {
-        const jsonStr = dataStr.substring(8, dataStr.length - 2);
-        const data = JSON.parse(jsonStr);
+      const data = response.data;
+      if (data && data.Datas && data.Datas.length > 0) {
+        const fundData = data.Datas[0];
         
         return {
-          fundCode: data.fundcode,
-          fundName: data.name,
-          nav: parseFloat(data.dwjz) || 0,
-          accNav: parseFloat(data.jzrq) || 0,
-          dailyChange: parseFloat(data.jzzzl) || 0,
-          dailyChangePercent: parseFloat(data.jzzzl) || 0,
-          estimateNav: parseFloat(data.gsz) || 0,
-          estimateChange: parseFloat(data.gszzl) || 0,
-          estimateChangePercent: parseFloat(data.gszzl) || 0,
+          fundCode,
+          fundName: fundData.SHORTNAME,
+          nav: parseFloat(fundData.NAV) || 0,
+          accNav: parseFloat(fundData.ACCNAV) || 0,
+          dailyChange: parseFloat(fundData.NAVCHGRT) || 0,
+          dailyChangePercent: parseFloat(fundData.NAVCHGRT) || 0,
+          estimateNav: parseFloat(fundData.GSZ) || 0,
+          estimateChange: parseFloat(fundData.GSZZL) || 0,
+          estimateChangePercent: parseFloat(fundData.GSZZL) || 0,
           lastUpdated: new Date(),
         };
       }
       
       return null;
     } catch (error) {
-      this.logger.error(`Failed to fetch from Tiantian for ${fundCode}:`, error);
+      this.logger.error(`Failed to fetch fund quote for ${fundCode}:`, error);
       return null;
     }
   }
 
   /**
-   * 从东方财富获取数据
+   * 获取市场警报
    */
-  private async fetchFromEastmoney(fundCode: string): Promise<FundQuote | null> {
-    try {
-      const response = await firstValueFrom(
-        this.httpService.get('https://fund.eastmoney.com/pingzhongdata/' + fundCode + '.js', {
-          headers: {
-            'Referer': 'https://fund.eastmoney.com/',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-          },
-        })
-      );
-
-      // 解析JavaScript中的数据
-      const dataStr = response.data;
-      if (dataStr) {
-        // 提取净值数据
-        const navMatch = dataStr.match(/Data_netWorthTrend\s*=\s*(\[[^\]]+\])/);
-        const accNavMatch = dataStr.match(/Data_ACWorthTrend\s*=\s*(\[[^\]]+\])/);
-        
-        if (navMatch && navMatch[1]) {
-          const navData = JSON.parse(navMatch[1]);
-          const latestNav = navData[navData.length - 1];
-          
-          return {
-            fundCode,
-            fundName: '', // 需要从其他接口获取
-            nav: latestNav.y || 0,
-            accNav: latestNav.y || 0,
-            dailyChange: 0, // 需要计算
-            dailyChangePercent: 0,
-            estimateNav: latestNav.y || 0,
-            estimateChange: 0,
-            estimateChangePercent: 0,
-            lastUpdated: new Date(),
-          };
-        }
-      }
-      
-      return null;
-    } catch (error) {
-      this.logger.error(`Failed to fetch from Eastmoney for ${fundCode}:`, error);
-      return null;
-    }
+  async getMarketAlerts(userId: string): Promise<MarketAlert[]> {
+    return this.marketAlerts.get(userId) || [];
   }
 
   /**
-   * 创建市场异动提醒
+   * 创建市场警报
    */
-  async createMarketAlert(
-    userId: string,
-    type: MarketAlert['type'],
-    level: MarketAlert['level'],
-    title: string,
-    message: string,
-    fundCodes: string[]
-  ): Promise<MarketAlert> {
-    const alert: MarketAlert = {
-      id: `alert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      type,
-      level,
-      title,
-      message,
-      fundCodes,
+  async createMarketAlert(userId: string, alert: Omit<MarketAlert, 'id' | 'triggeredAt' | 'isRead'>): Promise<MarketAlert> {
+    const newAlert: MarketAlert = {
+      ...alert,
+      id: Math.random().toString(36).substring(7),
       triggeredAt: new Date(),
       isRead: false,
     };
-
-    // 保存到用户提醒列表
-    const userAlerts = this.marketAlerts.get(userId) || [];
-    userAlerts.push(alert);
-    this.marketAlerts.set(userId, userAlerts);
-
-    return alert;
-  }
-
-  /**
-   * 获取用户市场提醒
-   */
-  async getUserAlerts(userId: string, limit: number = 50): Promise<MarketAlert[]> {
+    
     const alerts = this.marketAlerts.get(userId) || [];
-    return alerts
-      .sort((a, b) => b.triggeredAt.getTime() - a.triggeredAt.getTime())
-      .slice(0, limit);
+    alerts.push(newAlert);
+    this.marketAlerts.set(userId, alerts);
+    
+    return newAlert;
   }
 
   /**
-   * 标记提醒为已读
+   * 标记警报为已读
    */
   async markAlertAsRead(userId: string, alertId: string): Promise<boolean> {
     const alerts = this.marketAlerts.get(userId) || [];
@@ -249,6 +173,7 @@ export class MarketService {
     
     if (alert) {
       alert.isRead = true;
+      this.marketAlerts.set(userId, alerts);
       return true;
     }
     
@@ -256,178 +181,86 @@ export class MarketService {
   }
 
   /**
-   * 检查用户持仓的市场异动
+   * 获取用户投资组合快照
    */
-  async checkPortfolioAlerts(userId: string): Promise<MarketAlert[]> {
-    const alerts: MarketAlert[] = [];
-    
+  async getUserPortfolioSnapshot(userId: string): Promise<UserPortfolioSnapshot | null> {
     try {
-      // 获取用户基金持仓
+      // 获取用户基金
       const funds = await this.fundRepository.find({ where: { userId } });
-      if (funds.length === 0) return alerts;
-
-      const fundCodes = funds.map(f => f.code);
-      const quotes = await this.getFundQuotes(fundCodes);
-
-      // 检查单只基金大幅波动
-      for (const quote of quotes) {
-        if (Math.abs(quote.dailyChangePercent) > 5) {
-          alerts.push({
-            id: `volatility_${quote.fundCode}_${Date.now()}`,
-            type: 'high_volatility',
-            level: Math.abs(quote.dailyChangePercent) > 8 ? 'danger' : 'warning',
-            title: `${quote.fundName} 大幅波动`,
-            message: `${quote.fundName} 今日${quote.dailyChangePercent > 0 ? '上涨' : '下跌'}${Math.abs(quote.dailyChangePercent).toFixed(2)}%，请注意风险。`,
-            fundCodes: [quote.fundCode],
-            triggeredAt: new Date(),
-            isRead: false,
-          });
-        }
+      
+      if (funds.length === 0) {
+        return null;
       }
-
-      // 检查板块整体下跌
-      const sectorDistribution = await this.calculateSectorDistribution(userId);
-      for (const [sector, change] of Object.entries(sectorDistribution)) {
-        if (change < -3) {
-          alerts.push({
-            id: `sector_${sector}_${Date.now()}`,
-            type: 'sector_decline',
-            level: change < -5 ? 'danger' : 'warning',
-            title: `${sector} 板块下跌`,
-            message: `您的${sector}相关基金今日整体下跌${Math.abs(change).toFixed(2)}%，建议关注。`,
-            fundCodes: funds.filter(f => f.sector === sector).map(f => f.code),
-            triggeredAt: new Date(),
-            isRead: false,
-          });
-        }
+      
+      // 计算总价值
+      const totalValue = funds.reduce((sum, fund) => sum + (fund.currentValue || 0), 0);
+      
+      // 计算日变化
+      const dailyChange = funds.reduce((sum, fund) => {
+        const change = (fund.currentValue || 0) * (fund.profitRate || 0) / 100;
+        return sum + change;
+      }, 0);
+      
+      const dailyChangePercent = totalValue > 0 ? (dailyChange / totalValue) * 100 : 0;
+      
+      // 计算板块分布
+      const sectorDistribution: Record<string, number> = {};
+      funds.forEach(fund => {
+        const sector = fund.sector || '其他';
+        sectorDistribution[sector] = (sectorDistribution[sector] || 0) + (fund.currentValue || 0);
+      });
+      
+      // 归一化板块分布
+      Object.keys(sectorDistribution).forEach(sector => {
+        sectorDistribution[sector] = (sectorDistribution[sector] / totalValue) * 100;
+      });
+      
+      // 评估风险等级
+      let riskLevel: 'low' | 'medium' | 'high' = 'low';
+      if (dailyChangePercent > 2 || dailyChangePercent < -2) {
+        riskLevel = 'high';
+      } else if (dailyChangePercent > 1 || dailyChangePercent < -1) {
+        riskLevel = 'medium';
       }
-
-      // 保存提醒
-      const existingAlerts = this.marketAlerts.get(userId) || [];
-      this.marketAlerts.set(userId, [...alerts, ...existingAlerts]);
-
+      
+      return {
+        userId,
+        totalValue,
+        dailyChange,
+        dailyChangePercent,
+        sectorDistribution,
+        riskLevel,
+        lastUpdated: new Date(),
+      };
     } catch (error) {
-      this.logger.error(`Failed to check portfolio alerts for user ${userId}:`, error);
+      this.logger.error(`Failed to get portfolio snapshot for user ${userId}:`, error);
+      return null;
     }
-
-    return alerts;
   }
 
   /**
-   * 计算用户持仓的板块分布和涨跌幅
+   * 定期更新基金行情数据
    */
-  private async calculateSectorDistribution(userId: string): Promise<Record<string, number>> {
-    const funds = await this.fundRepository.find({ where: { userId } });
-    const quotes = await this.getFundQuotes(funds.map(f => f.code));
-    
-    const sectorChanges: Record<string, { totalValue: number; weightedChange: number }> = {};
-
-    for (const fund of funds) {
-      const quote = quotes.find(q => q.fundCode === fund.code);
-      if (quote) {
-        const value = fund.amount * quote.nav;
-        if (!sectorChanges[fund.sector]) {
-          sectorChanges[fund.sector] = { totalValue: 0, weightedChange: 0 };
-        }
-        
-        sectorChanges[fund.sector].totalValue += value;
-        sectorChanges[fund.sector].weightedChange += value * quote.dailyChangePercent;
-      }
-    }
-
-    const result: Record<string, number> = {};
-    for (const [sector, data] of Object.entries(sectorChanges)) {
-      if (data.totalValue > 0) {
-        result[sector] = data.weightedChange / data.totalValue;
-      }
-    }
-
-    return result;
-  }
-
-  /**
-   * 生成用户投资组合快照
-   */
-  async generatePortfolioSnapshot(userId: string): Promise<UserPortfolioSnapshot> {
-    const funds = await this.fundRepository.find({ where: { userId } });
-    const quotes = await this.getFundQuotes(funds.map(f => f.code));
-    
-    let totalValue = 0;
-    let totalChange = 0;
-    const sectorDistribution: Record<string, number> = {};
-
-    for (const fund of funds) {
-      const quote = quotes.find(q => q.fundCode === fund.code);
-      if (quote) {
-        const value = fund.amount * quote.nav;
-        const change = value * (quote.dailyChangePercent / 100);
-        
-        totalValue += value;
-        totalChange += change;
-        
-        if (!sectorDistribution[fund.sector]) {
-          sectorDistribution[fund.sector] = 0;
-        }
-        sectorDistribution[fund.sector] += value;
-      }
-    }
-
-    const dailyChangePercent = totalValue > 0 ? (totalChange / totalValue) * 100 : 0;
-    
-    // 计算风险等级
-    let riskLevel: UserPortfolioSnapshot['riskLevel'] = 'low';
-    if (Math.abs(dailyChangePercent) > 5) {
-      riskLevel = 'high';
-    } else if (Math.abs(dailyChangePercent) > 2) {
-      riskLevel = 'medium';
-    }
-
-    return {
-      userId,
-      totalValue,
-      dailyChange: totalChange,
-      dailyChangePercent,
-      sectorDistribution,
-      riskLevel,
-      lastUpdated: new Date(),
-    };
-  }
-
-  /**
-   * 定期任务：更新基金行情数据
-   */
-  @Cron(CronExpression.EVERY_30_MINUTES)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async updateFundQuotes() {
     try {
       this.logger.log('Updating fund quotes...');
       
-      // 获取所有需要更新的基金代码
-      const uniqueCodes = new Set<string>();
-      for (const [code] of this.fundQuotes) {
-        uniqueCodes.add(code);
+      // 获取所有用户的基金代码
+      const funds = await this.fundRepository.find();
+      const fundCodes = [...new Set(funds.map(f => f.fundCode))];
+      
+      // 批量更新行情
+      for (const code of fundCodes) {
+        const quote = await this.fetchFundQuote(code);
+        if (quote) {
+          this.fundQuotes.set(code, quote);
+        }
       }
       
-      if (uniqueCodes.size > 0) {
-        await this.getFundQuotes(Array.from(uniqueCodes));
-        this.logger.log(`Updated quotes for ${uniqueCodes.size} funds`);
-      }
+      this.logger.log(`Updated quotes for ${fundCodes.length} funds`);
     } catch (error) {
       this.logger.error('Failed to update fund quotes:', error);
-    }
-  }
-
-  /**
-   * 定期任务：检查市场异动
-   */
-  @Cron(CronExpression.EVERY_HOUR)
-  async checkMarketAlerts() {
-    try {
-      this.logger.log('Checking market alerts...');
-      
-      // 这里可以实现更复杂的逻辑，如检查所有活跃用户
-      // 暂时跳过具体实现
-    } catch (error) {
-      this.logger.error('Failed to check market alerts:', error);
     }
   }
 }

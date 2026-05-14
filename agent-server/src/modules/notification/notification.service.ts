@@ -19,6 +19,14 @@ export interface BehaviorIntervention {
   isDismissed: boolean;
 }
 
+export interface Notification {
+  type: string;
+  title: string;
+  content: string;
+  level: string;
+  userId: string;
+}
+
 export interface MonthlyReport {
   userId: string;
   month: string;
@@ -47,6 +55,31 @@ export class NotificationService {
     private actionRecordRepository: Repository<ActionRecord>,
     private marketService: MarketService,
   ) {}
+
+  // 添加WebSocket服务器引用
+  private webSocketServer: any = null;
+
+  setWebSocketServer(server: any) {
+    this.webSocketServer = server;
+  }
+
+  /**
+   * 创建并推送通知
+   */
+  async create(userId: string, notification: Omit<Notification, 'userId'>): Promise<void> {
+    this.logger.log(`Creating notification for user ${userId}: ${notification.title}`);
+    
+    // 这里可以保存到数据库或发送到WebSocket
+    if (this.webSocketServer) {
+      this.webSocketServer.emit(`notification_${userId}`, {
+        ...notification,
+        userId,
+        timestamp: new Date(),
+      });
+    }
+  }
+
+
 
   /**
    * 检测非理性行为并创建干预提醒

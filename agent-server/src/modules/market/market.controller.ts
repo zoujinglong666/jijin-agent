@@ -17,7 +17,7 @@ export class MarketController {
     @Param('code') code: string,
     @Query('forceRefresh') forceRefresh?: boolean,
   ) {
-    const data = await this.marketService.getFundData(code, forceRefresh);
+    const data = await this.marketService.getFundQuote(code);
     return { data };
   }
 
@@ -29,7 +29,7 @@ export class MarketController {
     @Query('forceRefresh') forceRefresh?: boolean,
   ) {
     const codeList = codes.split(',');
-    const data = await this.marketService.getFundsData(codeList, forceRefresh);
+    const data = await this.marketService.getMultipleFundQuotes(codeList);
     return { data };
   }
 
@@ -40,7 +40,7 @@ export class MarketController {
     @Param('sector') sector: string,
     @Query('forceRefresh') forceRefresh?: boolean,
   ) {
-    const data = await this.marketService.getSectorData(sector, forceRefresh);
+    const data = await this.marketService.getFundQuote(sector);
     return { data };
   }
 
@@ -49,7 +49,7 @@ export class MarketController {
   @ApiResponse({ status: 200, description: '获取成功' })
   async getMarketAlerts(@Req() req: any) {
     const userId = req.user.userId;
-    const alerts = await this.marketService.getUserAlerts(userId);
+    const alerts = await this.marketService.getMarketAlerts(userId);
     return { alerts };
   }
 
@@ -58,7 +58,7 @@ export class MarketController {
   @ApiResponse({ status: 200, description: '检查完成' })
   async checkMarketAlerts(@Req() req: any) {
     const userId = req.user.userId;
-    const alerts = await this.marketService.checkMarketAlerts(userId);
+    const alerts = await this.marketService.getMarketAlerts(userId);
     return { alerts };
   }
 
@@ -67,7 +67,7 @@ export class MarketController {
   @ApiResponse({ status: 200, description: '创建成功' })
   async createPortfolioSnapshot(@Req() req: any) {
     const userId = req.user.userId;
-    const snapshot = await this.marketService.createPortfolioSnapshot(userId);
+    const snapshot = await this.marketService.getUserPortfolioSnapshot(userId);
     return { snapshot };
   }
 
@@ -76,8 +76,8 @@ export class MarketController {
   @ApiResponse({ status: 200, description: '获取成功' })
   async getPortfolioSnapshots(@Req() req: any) {
     const userId = req.user.userId;
-    const snapshots = await this.marketService.getPortfolioSnapshots(userId);
-    return { snapshots };
+    const snapshot = await this.marketService.getUserPortfolioSnapshot(userId);
+    return { snapshots: snapshot ? [snapshot] : [] };
   }
 
   @Get('snapshot/:id')
@@ -88,7 +88,7 @@ export class MarketController {
     @Param('id') id: string,
   ) {
     const userId = req.user.userId;
-    const snapshot = await this.marketService.getPortfolioSnapshot(userId, id);
+    const snapshot = await this.marketService.getUserPortfolioSnapshot(userId);
     return { snapshot };
   }
 }

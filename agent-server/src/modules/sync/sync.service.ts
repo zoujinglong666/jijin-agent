@@ -408,9 +408,9 @@ export class SyncService {
   async getSyncStatus(userId: string): Promise<{ lastSyncTime: Date; syncPlatform: string; totalFunds: number; syncedFunds: number }> {
     const user = await this.userRepository.findOne({ where: { id: userId } });
     const totalFunds = await this.fundRepository.count({ where: { userId } });
-    const syncedFunds = await this.fundRepository.count({ 
-      where: { userId, lastSyncTime: user?.lastSyncTime } 
-    });
+    const syncedFunds = user?.lastSyncTime ? await this.fundRepository.count({ 
+      where: { userId, lastSyncTime: user.lastSyncTime } 
+    }) : 0;
 
     return {
       lastSyncTime: user?.lastSyncTime || new Date(0),
@@ -519,11 +519,11 @@ export class SyncService {
   async syncAllPlatforms(userId: string): Promise<{ success: boolean; message: string; results?: any[] }> {
     try {
       const platforms = ['alipay', 'tiantian', 'licaitong', 'eastmoney'];
-      const results = [];
+      const results: any[] = [];
       
       for (const platform of platforms) {
         const result = await this.syncPlatform(userId, platform);
-        results.push({ platform, ...result });
+        results.push({ platform, success: result.success, message: result.message, syncCount: result.syncCount });
       }
       
       return {

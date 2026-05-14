@@ -44,7 +44,7 @@ export class PortfolioController {
   }
 
   @Post('actions')
-  async addAction(@Req() req: any, @Body() body: { fundId: string; actionType: string; ratio: number; reason: string }) {
+  async addAction(@Req() req: any, @Body() body: { fundId: string; actionType: 'add' | 'remove' | 'adjust' | 'rebalance' | 'sell_all' | 'buy_all'; ratio: number; reason: string }) {
     return this.portfolioService.addAction(req.user.userId, body);
   }
 

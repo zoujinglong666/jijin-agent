@@ -81,7 +81,7 @@ export class PortfolioService {
     return { sector: maxSector, ratio: maxRatio };
   }
 
-  async addAction(userId: string, action: { fundId: string; actionType: string; ratio: number; reason: string }): Promise<ActionRecordEntity> {
+  async addAction(userId: string, action: { fundId: string; actionType: 'add' | 'remove' | 'adjust' | 'rebalance' | 'sell_all' | 'buy_all'; ratio: number; reason: string }): Promise<ActionRecordEntity> {
     const entity = this.actionRecordRepository.create({ ...action, userId });
     return this.actionRecordRepository.save(entity);
   }

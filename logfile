@@ -609,4 +609,127 @@
 2026-05-13 14:14:09.524 CST [36380] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
 2026-05-13 14:14:09.525 CST [36380] LOG:  terminating any other active server processes
 2026-05-13 14:14:09.726 CST [36380] LOG:  all server processes terminated; reinitializing
-^C
+^C2026-05-14 12:10:09.862 CST [25368] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-14 12:10:09.867 CST [25368] LOG:  listening on IPv6 address "::1", port 5433
+2026-05-14 12:10:09.867 CST [25368] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-05-14 12:10:10.006 CST [30864] LOG:  database system was interrupted; last known up at 2026-05-13 14:09:12 CST
+2026-05-14 12:10:10.353 CST [30864] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-05-14 12:10:10.357 CST [30864] LOG:  redo starts at 0/4E60E30
+2026-05-14 12:10:10.363 CST [30864] LOG:  invalid record length at 0/4E753F8: expected at least 24, got 0
+2026-05-14 12:10:10.363 CST [30864] LOG:  redo done at 0/4E753C0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-05-14 12:10:10.366 CST [38240] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-05-14 12:10:10.392 CST [38240] LOG:  checkpoint complete: wrote 21 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.019 s, total=0.028 s; sync files=16, longest=0.007 s, average=0.002 s; distance=81 kB, estimate=81 kB; lsn=0/4E753F8, redo lsn=0/4E753F8
+2026-05-14 12:10:10.483 CST [25368] LOG:  database system is ready to accept connections
+2026-05-14 12:16:44.115 CST [25368] LOG:  background worker "logical replication launcher" (PID 2668) was terminated by exception 0xC000013A
+2026-05-14 12:16:44.115 CST [25368] HINT:  See C include file "ntstatus.h" for a description of the hexadecimal value.
+2026-05-14 12:16:44.115 CST [25368] LOG:  terminating any other active server processes
+2026-05-14 12:16:44.131 CST [25368] LOG:  received fast shutdown request
+^C2026-05-14 12:17:47.661 CST [63644] LOG:  starting PostgreSQL 16.13, compiled by Visual C++ build 1944, 64-bit
+2026-05-14 12:17:47.665 CST [63644] LOG:  listening on IPv6 address "::1", port 5433
+2026-05-14 12:17:47.666 CST [63644] LOG:  listening on IPv4 address "127.0.0.1", port 5433
+2026-05-14 12:17:47.799 CST [34976] LOG:  database system was interrupted; last known up at 2026-05-14 12:10:10 CST
+2026-05-14 12:17:47.989 CST [34976] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-05-14 12:17:47.992 CST [34976] LOG:  redo starts at 0/4E75470
+2026-05-14 12:17:47.992 CST [34976] LOG:  invalid record length at 0/4E754A8: expected at least 24, got 0
+2026-05-14 12:17:47.992 CST [34976] LOG:  redo done at 0/4E75470 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2026-05-14 12:17:47.995 CST [62336] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-05-14 12:17:48.001 CST [62336] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.008 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/4E754A8, redo lsn=0/4E754A8
+2026-05-14 12:17:48.092 CST [63644] LOG:  database system is ready to accept connections
+2026-05-14 12:24:44.918 CST [616] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:24:44.918 CST [616] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:24:48.102 CST [49200] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:24:48.102 CST [49200] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:24:51.281 CST [43272] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:24:51.281 CST [43272] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:24:54.483 CST [56340] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:24:54.483 CST [56340] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:24:57.670 CST [57684] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:24:57.670 CST [57684] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:25:00.853 CST [57548] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:25:00.853 CST [57548] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:25:04.076 CST [21644] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:25:04.076 CST [21644] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:25:07.268 CST [59768] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:25:07.268 CST [59768] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:25:10.467 CST [46388] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 12:25:10.467 CST [46388] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 12:27:47.021 CST [62336] LOG:  checkpoint starting: time
+2026-05-14 12:27:59.007 CST [62336] LOG:  checkpoint complete: wrote 106 buffers (0.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=11.437 s, sync=0.429 s, total=11.987 s; sync files=210, longest=0.041 s, average=0.003 s; distance=1527 kB, estimate=1527 kB; lsn=0/4FF3340, redo lsn=0/4FF3308
+2026-05-14 13:51:32.246 CST [50872] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:32.246 CST [50872] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:35.935 CST [44960] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:35.935 CST [44960] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:39.411 CST [6196] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:39.411 CST [6196] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:42.809 CST [39828] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:42.809 CST [39828] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:45.995 CST [51944] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:45.995 CST [51944] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:49.175 CST [33116] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:49.175 CST [33116] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:52.360 CST [15884] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:52.360 CST [15884] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:55.632 CST [20096] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:55.632 CST [20096] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:51:58.825 CST [16176] ERROR:  column "userId" of relation "behavior_logs" contains null values
+2026-05-14 13:51:58.825 CST [16176] STATEMENT:  ALTER TABLE "behavior_logs" ADD "userId" character varying(50) NOT NULL
+2026-05-14 13:52:34.838 CST [45200] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:34.838 CST [45200] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:38.147 CST [20032] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:38.147 CST [20032] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:41.397 CST [57548] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:41.397 CST [57548] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:44.622 CST [27052] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:44.622 CST [27052] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:47.920 CST [18956] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:47.920 CST [18956] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:51.111 CST [61948] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:51.111 CST [61948] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:54.339 CST [25724] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:54.339 CST [25724] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:52:57.546 CST [2076] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:52:57.546 CST [2076] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:53:00.743 CST [63596] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:53:00.743 CST [63596] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:54:24.086 CST [62336] LOG:  checkpoint starting: time
+2026-05-14 13:54:37.098 CST [62336] LOG:  checkpoint complete: wrote 113 buffers (0.7%); 0 WAL file(s) added, 0 removed, 1 recycled; write=12.618 s, sync=0.184 s, total=13.013 s; sync files=387, longest=0.005 s, average=0.001 s; distance=2711 kB, estimate=2711 kB; lsn=0/5299198, redo lsn=0/5299160
+2026-05-14 13:55:46.331 CST [50704] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:46.331 CST [50704] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:55:49.559 CST [31360] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:49.559 CST [31360] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:55:52.795 CST [25980] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:52.795 CST [25980] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:55:56.028 CST [22360] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:56.028 CST [22360] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:55:57.793 CST [34828] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:57.793 CST [34828] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:55:59.217 CST [48460] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:55:59.217 CST [48460] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:00.995 CST [60900] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:00.995 CST [60900] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:02.411 CST [25044] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:02.411 CST [25044] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:04.182 CST [63284] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:04.182 CST [63284] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:05.606 CST [38820] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:05.606 CST [38820] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:07.363 CST [58884] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:07.363 CST [58884] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:08.785 CST [8064] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:08.785 CST [8064] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:10.603 CST [58892] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:10.603 CST [58892] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:12.001 CST [52708] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:12.001 CST [52708] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:13.814 CST [59472] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:13.814 CST [59472] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:17.090 CST [55524] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:17.090 CST [55524] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:20.286 CST [22176] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:20.286 CST [22176] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:56:23.638 CST [64088] ERROR:  column "eventType" of relation "behavior_logs" contains null values
+2026-05-14 13:56:23.638 CST [64088] STATEMENT:  ALTER TABLE "behavior_logs" ADD "eventType" character varying(50) NOT NULL
+2026-05-14 13:57:09.670 CST [11580] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2026-05-14 13:59:24.103 CST [62336] LOG:  checkpoint starting: time
+2026-05-14 13:59:37.211 CST [62336] LOG:  checkpoint complete: wrote 119 buffers (0.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=12.875 s, sync=0.133 s, total=13.109 s; sync files=407, longest=0.002 s, average=0.001 s; distance=2834 kB, estimate=2834 kB; lsn=0/555DD88, redo lsn=0/555DD50

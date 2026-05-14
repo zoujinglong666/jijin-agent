@@ -51,8 +51,8 @@ export class BehaviorService {
   async recordEvent(userId: string, event: BehaviorEvent): Promise<void> {
     const entity = this.behaviorLogRepository.create({
       userId,
-      eventType: event,
-      payload: '',
+      eventType: event as any,
+      eventData: '',
     });
     await this.behaviorLogRepository.save(entity);
   }
@@ -65,7 +65,7 @@ export class BehaviorService {
       order: { createdAt: 'ASC' },
     });
 
-    const openFrequency = recentRecords.filter(r => r.eventType === 'APP_OPEN').length;
+    const openFrequency = recentRecords.filter(r => r.eventType === 'REFRESH').length;
     const refreshFrequency = recentRecords.filter(r => r.eventType === 'REFRESH').length;
     const portfolioViewCount = recentRecords.filter(r => r.eventType === 'PORTFOLIO_VIEW').length;
     const simulateActionCount = recentRecords.filter(r => r.eventType === 'SIMULATE_SELL').length;
@@ -93,7 +93,7 @@ export class BehaviorService {
   async getEventCount(userId: string, event: BehaviorEvent, hours: number): Promise<number> {
     const cutoff = new Date(Date.now() - hours * 60 * 60 * 1000);
     return this.behaviorLogRepository.count({
-      where: { userId, eventType: event, createdAt: MoreThanOrEqual(cutoff) },
+      where: { userId, eventType: event as any, createdAt: MoreThanOrEqual(cutoff) },
     });
   }
 
@@ -147,7 +147,7 @@ export class BehaviorService {
       where: { userId, eventType: 'ADD_POSITION', createdAt: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },
     });
     const recentReduceActions = await this.actionRecordRepository.count({
-      where: { userId, actionType: 'reduce', createTime: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },
+      where: { userId, actionType: 'adjust', createTime: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },
     });
 
     return [
@@ -163,7 +163,7 @@ export class BehaviorService {
     const viewCount = await this.getEventCount(userId, 'PORTFOLIO_VIEW' as BehaviorEvent, 168);
     const portfolioViewCount = await this.getEventCount(userId, 'PORTFOLIO_VIEW' as BehaviorEvent, 24);
     const recentReduceActions = await this.actionRecordRepository.count({
-      where: { userId, actionType: 'reduce', createTime: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },
+      where: { userId, actionType: 'adjust', createTime: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },
     });
     const recentAddActions = await this.actionRecordRepository.count({
       where: { userId, actionType: 'add', createTime: MoreThanOrEqual(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)) },

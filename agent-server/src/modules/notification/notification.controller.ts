@@ -24,7 +24,7 @@ export class NotificationController {
   @ApiResponse({ status: 200, description: '检查完成' })
   async checkBehaviorInterventions(@Req() req: any) {
     const userId = req.user.userId;
-    const interventions = await this.notificationService.checkBehaviorInterventions(userId);
+    const interventions = await this.notificationService.detectIrrationalBehavior(userId);
     return { interventions };
   }
 
@@ -36,7 +36,7 @@ export class NotificationController {
     @Param('id') id: string,
   ) {
     const userId = req.user.userId;
-    const result = await this.notificationService.markInterventionRead(userId, id);
+    const result = await this.notificationService.markInterventionAsRead(userId, id);
     return { success: result };
   }
 
@@ -48,7 +48,7 @@ export class NotificationController {
     @Param('id') id: string,
   ) {
     const userId = req.user.userId;
-    const result = await this.notificationService.ignoreIntervention(userId, id);
+    const result = await this.notificationService.dismissIntervention(userId, id);
     return { success: result };
   }
 
@@ -81,7 +81,7 @@ export class NotificationController {
   @ApiResponse({ status: 200, description: '获取成功' })
   async getReportHistory(@Req() req: any) {
     const userId = req.user.userId;
-    const reports = await this.notificationService.getReportHistory(userId);
+    const reports = await this.notificationService.getUserReports(userId);
     return { reports };
   }
 }

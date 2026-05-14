@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Param, Body, UseGuards, Req } from '@nestjs/common';
-import { SyncService, PlatformConnectionStatus } from './sync.service';
+import { SyncService } from './sync.service';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -14,7 +14,7 @@ export class SyncController {
   @ApiOperation({ summary: '获取支持的同步平台列表' })
   @ApiResponse({ status: 200, description: '获取成功' })
   async getPlatforms() {
-    const platforms = await this.syncService.getSupportedPlatforms();
+    const platforms = ['alipay', 'tiantian', 'licaitong', 'eastmoney'];
     return { platforms };
   }
 
